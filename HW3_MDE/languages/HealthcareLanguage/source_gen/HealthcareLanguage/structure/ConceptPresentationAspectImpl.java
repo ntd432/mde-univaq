@@ -15,6 +15,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_EducationalInstitute;
   private ConceptPresentation props_Employee;
   private ConceptPresentation props_EmployeeRole;
+  private ConceptPresentation props_HealthcareEntity;
   private ConceptPresentation props_HealthcareSystem;
   private ConceptPresentation props_Hospital;
   private ConceptPresentation props_Observation;
@@ -32,7 +33,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.Appoinment:
         if (props_Appoinment == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.rawPresentation("Appoinment");
+          cpb.presentationByName();
           props_Appoinment = cpb.create();
         }
         return props_Appoinment;
@@ -71,6 +72,12 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_EmployeeRole = cpb.create();
         }
         return props_EmployeeRole;
+      case LanguageConceptSwitch.HealthcareEntity:
+        if (props_HealthcareEntity == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_HealthcareEntity = cpb.create();
+        }
+        return props_HealthcareEntity;
       case LanguageConceptSwitch.HealthcareSystem:
         if (props_HealthcareSystem == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

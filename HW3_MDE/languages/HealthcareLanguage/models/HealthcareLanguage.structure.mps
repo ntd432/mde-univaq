@@ -57,20 +57,15 @@
   <node concept="1TIwiD" id="2XlvMUm2w8X">
     <property role="EcuMT" value="3410772130865480253" />
     <property role="TrG5h" value="Organization" />
-    <property role="19KtqR" value="true" />
     <property role="3GE5qa" value="Entities" />
     <property role="R5$K7" value="true" />
-    <ref role="1TJDcQ" to="tpck:gw2VY9q" />
-    <node concept="PrWs8" id="2XlvMUm2w8Y" role="PzmwI">
-      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
-    </node>
+    <ref role="1TJDcQ" node="1KTb4WhSJLI" resolve="HealthcareEntity" />
   </node>
   <node concept="1TIwiD" id="2XlvMUm2w8Z">
     <property role="EcuMT" value="3410772130865480255" />
     <property role="3GE5qa" value="Entities" />
     <property role="TrG5h" value="Appoinment" />
-    <property role="19KtqR" value="true" />
-    <ref role="1TJDcQ" to="tpck:gw2VY9q" />
+    <ref role="1TJDcQ" node="1KTb4WhSJLI" resolve="HealthcareEntity" />
     <node concept="1TJgyi" id="2XlvMUm2w90" role="1TKVEl">
       <property role="IQ2nx" value="3410772130865480256" />
       <property role="TrG5h" value="start" />
@@ -91,16 +86,17 @@
       <property role="TrG5h" value="type" />
       <ref role="AX2Wp" node="2XlvMUm2w9b" resolve="AppointmentType" />
     </node>
-    <node concept="1TJgyj" id="2XlvMUm2waq" role="1TKVEi">
-      <property role="IQ2ns" value="3410772130865480346" />
-      <property role="20lmBu" value="fLJjDmT/aggregation" />
-      <property role="20kJfa" value="patient" />
-      <ref role="20lvS9" node="2XlvMUm2wam" resolve="Patient" />
-    </node>
     <node concept="1TJgyj" id="2XlvMUm2war" role="1TKVEi">
       <property role="IQ2ns" value="3410772130865480347" />
       <property role="20kJfa" value="practitioner" />
+      <property role="20lbJX" value="fLJekj4/_1" />
       <ref role="20lvS9" node="2XlvMUm2w9T" resolve="Employee" />
+    </node>
+    <node concept="1TJgyj" id="1KTb4WhSJLC" role="1TKVEi">
+      <property role="IQ2ns" value="2033705424848616552" />
+      <property role="20kJfa" value="patient" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" node="2XlvMUm2wam" resolve="Patient" />
     </node>
   </node>
   <node concept="25R3W" id="2XlvMUm2w94">
@@ -317,9 +313,8 @@
       <property role="TrG5h" value="role" />
       <ref role="AX2Wp" node="2XlvMUm2w9A" resolve="Role" />
     </node>
-    <node concept="1TJgyj" id="2XlvMUm2w9S" role="1TKVEi">
-      <property role="IQ2ns" value="3410772130865480312" />
-      <property role="20lmBu" value="fLJjDmT/aggregation" />
+    <node concept="1TJgyj" id="1KTb4WhSJLE" role="1TKVEi">
+      <property role="IQ2ns" value="2033705424848616554" />
       <property role="20kJfa" value="employee" />
       <property role="20lbJX" value="fLJekj4/_1" />
       <ref role="20lvS9" node="2XlvMUm2w9T" resolve="Employee" />
@@ -345,7 +340,7 @@
     <node concept="1TJgyj" id="2YlWCeWA9zr" role="1TKVEi">
       <property role="IQ2ns" value="3428913338931255515" />
       <property role="20lmBu" value="fLJjDmT/aggregation" />
-      <property role="20kJfa" value="specialty" />
+      <property role="20kJfa" value="specialties" />
       <property role="20lbJX" value="fLJekj5/_0__n" />
       <ref role="20lvS9" node="2YlWCeWA9zp" resolve="Specialty" />
     </node>
@@ -354,10 +349,7 @@
     <property role="EcuMT" value="3410772130865480314" />
     <property role="3GE5qa" value="Entities" />
     <property role="TrG5h" value="Person" />
-    <ref role="1TJDcQ" to="tpck:gw2VY9q" />
-    <node concept="PrWs8" id="2XlvMUm2w9V" role="PzmwI">
-      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
-    </node>
+    <ref role="1TJDcQ" node="1KTb4WhSJLI" resolve="HealthcareEntity" />
     <node concept="1TJgyi" id="2XlvMUm2w9W" role="1TKVEl">
       <property role="IQ2nx" value="3410772130865480316" />
       <property role="TrG5h" value="gender" />
@@ -387,14 +379,12 @@
     <property role="EcuMT" value="3410772130865480324" />
     <property role="3GE5qa" value="Entities" />
     <property role="TrG5h" value="EducationalInstitute" />
-    <property role="19KtqR" value="true" />
     <ref role="1TJDcQ" node="2XlvMUm2w8X" resolve="Organization" />
   </node>
   <node concept="1TIwiD" id="2XlvMUm2wab">
     <property role="EcuMT" value="3410772130865480331" />
     <property role="3GE5qa" value="Entities" />
     <property role="TrG5h" value="Hospital" />
-    <property role="19KtqR" value="true" />
     <ref role="1TJDcQ" node="2XlvMUm2w8X" resolve="Organization" />
     <node concept="1TJgyi" id="2XlvMUm2wad" role="1TKVEl">
       <property role="IQ2nx" value="3410772130865480333" />
@@ -459,17 +449,26 @@
       <ref role="AX2Wp" node="2XlvMUm2w9q" resolve="EmployeeSpecialty" />
     </node>
   </node>
-  <node concept="1TIwiD" id="2YlWCeWAkOa">
-    <property role="EcuMT" value="3428913338931301642" />
-    <property role="3GE5qa" value="Entities" />
+  <node concept="1TIwiD" id="1KTb4WhSJLG">
+    <property role="EcuMT" value="2033705424848616556" />
     <property role="TrG5h" value="HealthcareSystem" />
+    <property role="19KtqR" value="true" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" />
-    <node concept="1TJgyj" id="2YlWCeWAkOb" role="1TKVEi">
-      <property role="IQ2ns" value="3428913338931301643" />
+    <node concept="1TJgyj" id="1KTb4WhSJLM" role="1TKVEi">
+      <property role="IQ2ns" value="2033705424848616562" />
       <property role="20lmBu" value="fLJjDmT/aggregation" />
-      <property role="20kJfa" value="elements" />
+      <property role="20kJfa" value="entities" />
       <property role="20lbJX" value="fLJekj5/_0__n" />
-      <ref role="20lvS9" to="tpck:gw2VY9q" resolve="BaseConcept" />
+      <ref role="20lvS9" node="1KTb4WhSJLI" resolve="HealthcareEntity" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="1KTb4WhSJLI">
+    <property role="EcuMT" value="2033705424848616558" />
+    <property role="TrG5h" value="HealthcareEntity" />
+    <property role="R5$K7" value="true" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" />
+    <node concept="PrWs8" id="1KTb4WhSJLJ" role="PzmwI">
+      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
   </node>
 </model>

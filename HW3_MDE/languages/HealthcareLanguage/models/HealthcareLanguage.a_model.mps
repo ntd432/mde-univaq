@@ -8,16 +8,17 @@
   <imports />
   <registry>
     <language id="7f0568a2-8c1a-4091-a87e-390be85922c7" name="HealthcareLanguage">
+      <concept id="2033705424848616556" name="HealthcareLanguage.structure.HealthcareSystem" flags="ng" index="dQX0z">
+        <child id="2033705424848616562" name="entities" index="dQX0X" />
+      </concept>
       <concept id="3428913338931255513" name="HealthcareLanguage.structure.Specialty" flags="ng" index="2j3mDq">
         <property id="3428913338931255514" name="name" index="2j3mDp" />
       </concept>
       <concept id="3410772130865480255" name="HealthcareLanguage.structure.Appoinment" flags="ng" index="2TnROh">
-        <property id="3410772130865480258" name="status" index="2TnRPG" />
-        <property id="3410772130865480259" name="type" index="2TnRPH" />
         <property id="3410772130865480256" name="start" index="2TnRPI" />
         <property id="3410772130865480257" name="end" index="2TnRPJ" />
+        <reference id="2033705424848616552" name="patient" index="dQX0B" />
         <reference id="3410772130865480347" name="practitioner" index="2TnRQP" />
-        <child id="3410772130865480346" name="patient" index="2TnRQO" />
       </concept>
       <concept id="3410772130865480302" name="HealthcareLanguage.structure.Condition" flags="ng" index="2TnRP0">
         <property id="3410772130865480304" name="status" index="2TnRPu" />
@@ -28,12 +29,12 @@
       </concept>
       <concept id="3410772130865480313" name="HealthcareLanguage.structure.Employee" flags="ng" index="2TnRPn">
         <property id="3410772130865480318" name="description" index="2TnRPg" />
-        <child id="3428913338931255515" name="specialty" index="2j3mDo" />
+        <child id="3428913338931255515" name="specialties" index="2j3mDo" />
         <child id="3410772130865480319" name="qualifications" index="2TnRPh" />
       </concept>
       <concept id="3410772130865480309" name="HealthcareLanguage.structure.EmployeeRole" flags="ng" index="2TnRPr">
         <property id="3410772130865480311" name="role" index="2TnRPp" />
-        <child id="3410772130865480312" name="employee" index="2TnRPm" />
+        <reference id="2033705424848616554" name="employee" index="dQX0_" />
       </concept>
       <concept id="3410772130865480307" name="HealthcareLanguage.structure.Department" flags="ng" index="2TnRPt">
         <child id="3410772130865480308" name="staff" index="2TnRPq" />
@@ -62,127 +63,174 @@
       </concept>
     </language>
   </registry>
-  <node concept="2TnRQ_" id="4N9BueVaBA6">
-    <property role="TrG5h" value="Coppito Clinic" />
-    <property role="2TnRQz" value="This is a clinic located in Coppito, L'Aquila." />
-    <node concept="2TnRPt" id="4N9BueVaBA7" role="2TnRQw">
-      <property role="TrG5h" value="Maintenance Department" />
-      <node concept="2TnRPr" id="4N9BueVaBA8" role="2TnRPq">
-        <property role="TrG5h" value="Janitor" />
-        <property role="2TnRPp" value="2XlvMUm2w9F/Janitor" />
-        <node concept="2TnRPn" id="4N9BueVaBA9" role="2TnRPm">
-          <property role="TrG5h" value="Vittorio" />
-          <property role="2TnRPg" value="Daytime Janitor" />
-          <property role="2TnRPi" value="true" />
+  <node concept="dQX0z" id="1KTb4WhSNJg">
+    <node concept="2TnRQ_" id="1KTb4WhSQu2" role="dQX0X">
+      <property role="TrG5h" value="Coppito Clinic" />
+      <property role="2TnRQz" value="This is a clinic located in Coppito, L'Aquila." />
+      <node concept="2TnRPt" id="1KTb4WhSQu3" role="2TnRQw">
+        <property role="TrG5h" value="Maintenance Department" />
+        <node concept="2TnRPr" id="1KTb4WhSYrG" role="2TnRPq">
+          <property role="TrG5h" value="Janitor" />
+          <property role="2TnRPp" value="2XlvMUm2w9F/Janitor" />
+          <ref role="dQX0_" node="1KTb4WhSUs4" resolve="Vittorio" />
         </node>
       </node>
-    </node>
-    <node concept="2TnRPt" id="4N9BueVaBAa" role="2TnRQw">
-      <property role="TrG5h" value="Medical Department" />
-      <node concept="2TnRPr" id="2YlWCeWAsUA" role="2TnRPq">
-        <property role="TrG5h" value="Principal Doctor" />
-        <node concept="2TnRPn" id="2YlWCeWAsUB" role="2TnRPm">
-          <property role="TrG5h" value="Gladis" />
-          <property role="2TnRPg" value="Gladis is the Principal Doctor." />
-          <node concept="2j3mDq" id="2YlWCeWAsUE" role="2j3mDo">
-            <property role="2j3mDp" value="2XlvMUm2w9t/Neurology" />
-          </node>
-          <node concept="2j3mDq" id="2YlWCeWAsUF" role="2j3mDo">
-            <property role="2j3mDp" value="2XlvMUm2w9u/Pediatry" />
-          </node>
-          <node concept="2TnRQI" id="2YlWCeWAsUC" role="2TnRPh">
-            <property role="TrG5h" value="Neurology" />
-            <property role="2TnRQG" value="12/02/2002" />
-            <ref role="2TnRQH" node="4N9BueVaBAi" resolve="Harvard Medical School" />
-          </node>
-          <node concept="2TnRQI" id="2YlWCeWAsUD" role="2TnRPh">
-            <property role="TrG5h" value="Pediatry" />
-            <property role="2TnRQG" value="06/11/2010" />
-            <ref role="2TnRQH" node="4N9BueVaBAi" resolve="Harvard Medical School" />
-          </node>
+      <node concept="2TnRPt" id="1KTb4WhSYqD" role="2TnRQw">
+        <property role="TrG5h" value="Medical department" />
+        <node concept="2TnRPr" id="1KTb4WhSYqE" role="2TnRPq">
+          <property role="TrG5h" value="Principal Doctor" />
+          <ref role="dQX0_" node="1KTb4WhSUsh" resolve="Gladis" />
         </node>
-      </node>
-      <node concept="2TnRPr" id="4N9BueVaBAo" role="2TnRPq">
-        <property role="TrG5h" value="Eric" />
-        <property role="2TnRPp" value="2XlvMUm2w9C/Nurse" />
-        <node concept="2TnRPn" id="4N9BueVaBAp" role="2TnRPm">
-          <property role="2TnRPg" value="Eric is a nurse." />
-          <property role="2TnRPi" value="true" />
-          <property role="TrG5h" value="Main Nurse" />
-          <node concept="2TnRQI" id="4N9BueVaBAq" role="2TnRPh">
-            <property role="TrG5h" value="Nursing" />
-            <property role="2TnRQG" value="09/05/2001" />
-            <ref role="2TnRQH" node="4N9BueVaBAr" resolve="University of Pennsylvania" />
-          </node>
+        <node concept="2TnRPr" id="1KTb4WhSYqF" role="2TnRPq">
+          <property role="TrG5h" value="Nurse" />
+          <property role="2TnRPp" value="2XlvMUm2w9C/Nurse" />
+          <ref role="dQX0_" node="1KTb4WhSYqu" resolve="Eric" />
         </node>
-      </node>
-      <node concept="2TnRPr" id="4N9BueVaBAu" role="2TnRPq">
-        <property role="TrG5h" value="Melissa" />
-        <property role="2TnRPp" value="2XlvMUm2w9G/Intern" />
-        <node concept="2TnRPn" id="4N9BueVaBAv" role="2TnRPm">
-          <property role="2TnRPg" value="Melissa is a medical intern." />
+        <node concept="2TnRPr" id="1KTb4WhSYqG" role="2TnRPq">
           <property role="TrG5h" value="Intern" />
+          <property role="2TnRPp" value="2XlvMUm2w9G/Intern" />
+          <ref role="dQX0_" node="1KTb4WhSUsa" resolve="Melissa" />
         </node>
       </node>
     </node>
-  </node>
-  <node concept="2TnRQE" id="4N9BueVaBAi">
-    <property role="TrG5h" value="Harvard Medical School" />
-  </node>
-  <node concept="2TnRQE" id="4N9BueVaBAr">
-    <property role="TrG5h" value="University of Pennsylvania" />
-  </node>
-  <node concept="2TnROh" id="4N9BueVaMdN">
-    <property role="2TnRPI" value="11/05/2024" />
-    <property role="2TnRPG" value="2XlvMUm2w99/NoShow" />
-    <property role="2TnRPJ" value="11/05/2024" />
-    <ref role="2TnRQP" node="2YlWCeWAsUB" resolve="Gladis" />
-    <node concept="2TnRQS" id="4N9BueVaMdO" role="2TnRQO">
-      <property role="TrG5h" value="Prachi" />
-      <node concept="2TnRP0" id="4N9BueVaMdS" role="2TnRQQ">
-        <property role="TrG5h" value="Appendicitis" />
-        <property role="2TnRPu" value="2XlvMUm2w9p/Resolved" />
-        <property role="2TnRPv" value="2XlvMUm2w9i/Moderate" />
+    <node concept="2TnROh" id="1KTb4WhSYqI" role="dQX0X">
+      <property role="TrG5h" value="Appointment-0" />
+      <property role="2TnRPI" value="20/11/2024" />
+      <property role="2TnRPJ" value="20/11/2024" />
+      <ref role="2TnRQP" node="1KTb4WhSYqu" resolve="Eric" />
+      <ref role="dQX0B" node="1KTb4WhSYr2" resolve="David" />
+    </node>
+    <node concept="2TnROh" id="1KTb4WhSYqM" role="dQX0X">
+      <property role="TrG5h" value="Appointment-1" />
+      <property role="2TnRPI" value="15/10/2024" />
+      <property role="2TnRPJ" value="15/10/2024" />
+      <ref role="2TnRQP" node="1KTb4WhSUsh" resolve="Gladis" />
+      <ref role="dQX0B" node="1KTb4WhSYrh" resolve="Prachi" />
+    </node>
+    <node concept="2TnROh" id="1KTb4WhSYqP" role="dQX0X">
+      <property role="TrG5h" value="Appointment-2" />
+      <property role="2TnRPI" value="10/01/2024" />
+      <property role="2TnRPJ" value="10/01/2024" />
+      <ref role="2TnRQP" node="1KTb4WhSUsh" resolve="Gladis" />
+      <ref role="dQX0B" node="1KTb4WhSYrw" resolve="Nakamura" />
+    </node>
+    <node concept="2TnROh" id="1KTb4WhSYqS" role="dQX0X">
+      <property role="TrG5h" value="Appointment-3" />
+      <property role="2TnRPI" value="05/04/2024" />
+      <property role="2TnRPJ" value="05/04/2024" />
+      <ref role="2TnRQP" node="1KTb4WhSUsa" resolve="Melissa" />
+      <ref role="dQX0B" node="1KTb4WhSYrw" resolve="Nakamura" />
+    </node>
+    <node concept="2TnROh" id="1KTb4WhSYqV" role="dQX0X">
+      <property role="TrG5h" value="Appointment-4" />
+      <property role="2TnRPI" value="13/05/2024" />
+      <property role="2TnRPJ" value="13/05/2024" />
+      <ref role="2TnRQP" node="1KTb4WhSUsh" resolve="Gladis" />
+      <ref role="dQX0B" node="1KTb4WhSYrw" resolve="Nakamura" />
+    </node>
+    <node concept="2TnRPn" id="1KTb4WhSUs4" role="dQX0X">
+      <property role="TrG5h" value="Vittorio" />
+      <property role="2TnRPg" value="Vittorio, a seasoned janitor with over 15 years of experience, is known for his meticulous attention to detail and dedication to maintaining a clean, safe, and welcoming environment at the hospital, contributing significantly to the well-being of patients, staff, and visitors alike." />
+      <property role="2TnRPi" value="true" />
+      <node concept="2j3mDq" id="1KTb4WhSUs8" role="2j3mDo" />
+    </node>
+    <node concept="2TnRPn" id="1KTb4WhSUsa" role="dQX0X">
+      <property role="TrG5h" value="Melissa" />
+      <property role="2TnRPg" value="Melissa, a diligent intern at the hospital, is eager to learn and contribute, supporting medical teams with enthusiasm and a strong commitment to patient care." />
+      <node concept="2j3mDq" id="1KTb4WhSUsf" role="2j3mDo" />
+    </node>
+    <node concept="2TnRPn" id="1KTb4WhSUsh" role="dQX0X">
+      <property role="TrG5h" value="Gladis" />
+      <property role="2TnRPg" value="Gladis has two degrees from Havard Medical Schools" />
+      <node concept="2j3mDq" id="1KTb4WhSUsw" role="2j3mDo">
+        <property role="2j3mDp" value="2XlvMUm2w9t/Neurology" />
       </node>
-      <node concept="2TnRP0" id="4N9BueVaMdW" role="2TnRQQ">
-        <property role="TrG5h" value="Autism" />
-        <property role="2TnRPv" value="2XlvMUm2w9k/Severe" />
+      <node concept="2j3mDq" id="1KTb4WhSUsx" role="2j3mDo">
+        <property role="2j3mDp" value="2XlvMUm2w9u/Pediatry" />
       </node>
-      <node concept="2TnRQY" id="4N9BueVaMdP" role="2TnRQT">
-        <property role="TrG5h" value="MRI" />
-        <property role="2TnRQW" value="2XlvMUm2w9_/XRay" />
-        <property role="2TnRQZ" value="Normal" />
+      <node concept="2TnRQI" id="1KTb4WhSUsm" role="2TnRPh">
+        <property role="TrG5h" value="Neurologist" />
+        <property role="2TnRQG" value="06/11/2000" />
+        <ref role="2TnRQH" node="1KTb4WhSUsp" resolve="Harvard Medical School" />
+      </node>
+      <node concept="2TnRQI" id="1KTb4WhSYqq" role="2TnRPh">
+        <property role="TrG5h" value="Peditrician" />
+        <property role="2TnRQG" value="06/11/2005" />
+        <ref role="2TnRQH" node="1KTb4WhSUsp" resolve="Harvard Medical School" />
       </node>
     </node>
-  </node>
-  <node concept="2TnROh" id="4N9BueVaMe2">
-    <property role="2TnRPI" value="23/09/2024" />
-    <property role="2TnRPJ" value="23/09/2024" />
-    <property role="2TnRPG" value="2XlvMUm2w96/Arrived" />
-    <property role="2TnRPH" value="2XlvMUm2w9e/Checkup" />
-    <ref role="2TnRQP" node="4N9BueVaBAp" resolve="Main Nurse" />
-    <node concept="2TnRQS" id="4N9BueVaMe5" role="2TnRQO">
+    <node concept="2TnRPn" id="1KTb4WhSYqu" role="dQX0X">
+      <property role="TrG5h" value="Eric" />
+      <property role="2TnRPg" value="Eric, born in 2000, obtained his nursing degree from UPen in 2020" />
+      <property role="2TnRPi" value="true" />
+      <node concept="2j3mDq" id="1KTb4WhSYqz" role="2j3mDo" />
+      <node concept="2TnRQI" id="1KTb4WhSYqx" role="2TnRPh">
+        <property role="TrG5h" value="Nursing" />
+        <property role="2TnRQG" value="20/07/2020" />
+        <ref role="2TnRQH" node="1KTb4WhSUss" resolve="University of Pennsylvania" />
+      </node>
+    </node>
+    <node concept="2TnRQS" id="1KTb4WhSYr2" role="dQX0X">
       <property role="TrG5h" value="David" />
       <property role="2TnRPi" value="true" />
-      <node concept="2TnRP0" id="4N9BueVaMed" role="2TnRQQ">
+      <node concept="2TnRP0" id="1KTb4WhSYrb" role="2TnRQQ">
         <property role="TrG5h" value="Hypertensive" />
         <property role="2TnRPv" value="2XlvMUm2w9k/Severe" />
       </node>
-      <node concept="2TnRP0" id="4N9BueVaMeg" role="2TnRQQ">
+      <node concept="2TnRP0" id="1KTb4WhSYrc" role="2TnRQQ">
         <property role="TrG5h" value="Asthma" />
         <property role="2TnRPu" value="2XlvMUm2w9n/Recurrence" />
         <property role="2TnRPv" value="2XlvMUm2w9i/Moderate" />
       </node>
-      <node concept="2TnRQY" id="4N9BueVaMe7" role="2TnRQT">
-        <property role="TrG5h" value="Heart Rate Measurement" />
-        <property role="2TnRQZ" value="70" />
-        <property role="2TnRQW" value="2XlvMUm2w9$/HeartRate" />
-      </node>
-      <node concept="2TnRQY" id="4N9BueVaMeb" role="2TnRQT">
-        <property role="TrG5h" value="Blood Pressure Measurement" />
+      <node concept="2TnRQY" id="1KTb4WhSYr5" role="2TnRQT">
+        <property role="TrG5h" value="Blood Pressure Observation" />
         <property role="2TnRQZ" value="120/80" />
         <property role="2TnRQW" value="2XlvMUm2w9z/BloodPressure" />
       </node>
+      <node concept="2TnRQY" id="1KTb4WhSYr6" role="2TnRQT">
+        <property role="TrG5h" value="Heart Rate Measurement" />
+        <property role="2TnRQZ" value="70/100" />
+        <property role="2TnRQW" value="2XlvMUm2w9$/HeartRate" />
+      </node>
+    </node>
+    <node concept="2TnRQS" id="1KTb4WhSYrh" role="dQX0X">
+      <property role="TrG5h" value="Prachi" />
+      <node concept="2TnRP0" id="1KTb4WhSYrl" role="2TnRQQ">
+        <property role="TrG5h" value="Appendicitis" />
+        <property role="2TnRPu" value="2XlvMUm2w9p/Resolved" />
+        <property role="2TnRPv" value="2XlvMUm2w9i/Moderate" />
+      </node>
+      <node concept="2TnRP0" id="1KTb4WhSYrm" role="2TnRQQ">
+        <property role="TrG5h" value="Autism" />
+        <property role="2TnRPv" value="2XlvMUm2w9k/Severe" />
+      </node>
+      <node concept="2TnRP0" id="1KTb4WhSYrn" role="2TnRQQ">
+        <property role="TrG5h" value="Pyromania" />
+        <property role="2TnRPu" value="2XlvMUm2w9p/Resolved" />
+      </node>
+      <node concept="2TnRQY" id="1KTb4WhSYrk" role="2TnRQT">
+        <property role="TrG5h" value="MRI" />
+        <property role="2TnRQZ" value="Normal" />
+        <property role="2TnRQW" value="2XlvMUm2w9_/XRay" />
+      </node>
+    </node>
+    <node concept="2TnRQS" id="1KTb4WhSYrw" role="dQX0X">
+      <property role="TrG5h" value="Nakamura" />
+      <node concept="2TnRQY" id="1KTb4WhSYr_" role="2TnRQT">
+        <property role="TrG5h" value="Heart rate" />
+        <property role="2TnRQZ" value="60/120" />
+        <property role="2TnRQW" value="2XlvMUm2w9$/HeartRate" />
+      </node>
+      <node concept="2TnRP0" id="1KTb4WhSYrz" role="2TnRQQ">
+        <property role="TrG5h" value="Food allergy diet" />
+        <property role="2TnRPu" value="2XlvMUm2w9n/Recurrence" />
+      </node>
+    </node>
+    <node concept="2TnRQE" id="1KTb4WhSUsp" role="dQX0X">
+      <property role="TrG5h" value="Harvard Medical School" />
+    </node>
+    <node concept="2TnRQE" id="1KTb4WhSUss" role="dQX0X">
+      <property role="TrG5h" value="University of Pennsylvania" />
     </node>
   </node>
 </model>

@@ -15,14 +15,15 @@ public final class LanguageConceptSwitch {
   public static final int EducationalInstitute = 3;
   public static final int Employee = 4;
   public static final int EmployeeRole = 5;
-  public static final int HealthcareSystem = 6;
-  public static final int Hospital = 7;
-  public static final int Observation = 8;
-  public static final int Organization = 9;
-  public static final int Patient = 10;
-  public static final int Person = 11;
-  public static final int Qualification = 12;
-  public static final int Specialty = 13;
+  public static final int HealthcareEntity = 6;
+  public static final int HealthcareSystem = 7;
+  public static final int Hospital = 8;
+  public static final int Observation = 9;
+  public static final int Organization = 10;
+  public static final int Patient = 11;
+  public static final int Person = 12;
+  public static final int Qualification = 13;
+  public static final int Specialty = 14;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0x7f0568a28c1a4091L, 0xa87e390be85922c7L);
@@ -32,7 +33,8 @@ public final class LanguageConceptSwitch {
     builder.put(0x2f557f2e960a0284L, EducationalInstitute);
     builder.put(0x2f557f2e960a0279L, Employee);
     builder.put(0x2f557f2e960a0275L, EmployeeRole);
-    builder.put(0x2f95f283bc994d0aL, HealthcareSystem);
+    builder.put(0x1c392c4f11e2fc6eL, HealthcareEntity);
+    builder.put(0x1c392c4f11e2fc6cL, HealthcareSystem);
     builder.put(0x2f557f2e960a028bL, Hospital);
     builder.put(0x2f557f2e960a0290L, Observation);
     builder.put(0x2f557f2e960a023dL, Organization);

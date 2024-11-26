@@ -22,6 +22,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptEducationalInstitute = createDescriptorForEducationalInstitute();
   /*package*/ final ConceptDescriptor myConceptEmployee = createDescriptorForEmployee();
   /*package*/ final ConceptDescriptor myConceptEmployeeRole = createDescriptorForEmployeeRole();
+  /*package*/ final ConceptDescriptor myConceptHealthcareEntity = createDescriptorForHealthcareEntity();
   /*package*/ final ConceptDescriptor myConceptHealthcareSystem = createDescriptorForHealthcareSystem();
   /*package*/ final ConceptDescriptor myConceptHospital = createDescriptorForHospital();
   /*package*/ final ConceptDescriptor myConceptObservation = createDescriptorForObservation();
@@ -47,12 +48,11 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   @Override
   public void reportDependencies(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.Dependencies deps) {
     deps.extendedLanguage(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, "jetbrains.mps.lang.core");
-    deps.aggregatedLanguage(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, "jetbrains.mps.lang.core");
   }
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptAppoinment, myConceptCondition, myConceptDepartment, myConceptEducationalInstitute, myConceptEmployee, myConceptEmployeeRole, myConceptHealthcareSystem, myConceptHospital, myConceptObservation, myConceptOrganization, myConceptPatient, myConceptPerson, myConceptQualification, myConceptSpecialty);
+    return Arrays.asList(myConceptAppoinment, myConceptCondition, myConceptDepartment, myConceptEducationalInstitute, myConceptEmployee, myConceptEmployeeRole, myConceptHealthcareEntity, myConceptHealthcareSystem, myConceptHospital, myConceptObservation, myConceptOrganization, myConceptPatient, myConceptPerson, myConceptQualification, myConceptSpecialty);
   }
 
   @Override
@@ -71,6 +71,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptEmployee;
       case LanguageConceptSwitch.EmployeeRole:
         return myConceptEmployeeRole;
+      case LanguageConceptSwitch.HealthcareEntity:
+        return myConceptHealthcareEntity;
       case LanguageConceptSwitch.HealthcareSystem:
         return myConceptHealthcareSystem;
       case LanguageConceptSwitch.Hospital:
@@ -103,15 +105,17 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   private static ConceptDescriptor createDescriptorForAppoinment() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("HealthcareLanguage", "Appoinment", 0x7f0568a28c1a4091L, 0xa87e390be85922c7L, 0x2f557f2e960a023fL);
-    b.class_(false, false, true);
+    b.class_(false, false, false);
+    // extends: HealthcareLanguage.structure.HealthcareEntity
+    b.super_(0x7f0568a28c1a4091L, 0xa87e390be85922c7L, 0x1c392c4f11e2fc6eL);
     b.origin("r:e5bcaa7d-12f5-4ff3-b8b6-1218c56a72be(HealthcareLanguage.structure)/3410772130865480255");
     b.version(3);
     b.property("start", 0x2f557f2e960a0240L).type(PrimitiveTypeId.STRING).origin("3410772130865480256").done();
     b.property("end", 0x2f557f2e960a0241L).type(PrimitiveTypeId.STRING).origin("3410772130865480257").done();
     b.property("status", 0x2f557f2e960a0242L).type(MetaIdFactory.dataTypeId(0x7f0568a28c1a4091L, 0xa87e390be85922c7L, 0x2f557f2e960a0244L)).origin("3410772130865480258").done();
     b.property("type", 0x2f557f2e960a0243L).type(MetaIdFactory.dataTypeId(0x7f0568a28c1a4091L, 0xa87e390be85922c7L, 0x2f557f2e960a024bL)).origin("3410772130865480259").done();
-    b.associate("practitioner", 0x2f557f2e960a029bL).target(0x7f0568a28c1a4091L, 0xa87e390be85922c7L, 0x2f557f2e960a0279L).optional(true).origin("3410772130865480347").done();
-    b.aggregate("patient", 0x2f557f2e960a029aL).target(0x7f0568a28c1a4091L, 0xa87e390be85922c7L, 0x2f557f2e960a0296L).optional(true).ordered(true).multiple(false).origin("3410772130865480346").done();
+    b.associate("practitioner", 0x2f557f2e960a029bL).target(0x7f0568a28c1a4091L, 0xa87e390be85922c7L, 0x2f557f2e960a0279L).optional(false).origin("3410772130865480347").done();
+    b.associate("patient", 0x1c392c4f11e2fc68L).target(0x7f0568a28c1a4091L, 0xa87e390be85922c7L, 0x2f557f2e960a0296L).optional(false).origin("2033705424848616552").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForCondition() {
@@ -136,7 +140,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   }
   private static ConceptDescriptor createDescriptorForEducationalInstitute() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("HealthcareLanguage", "EducationalInstitute", 0x7f0568a28c1a4091L, 0xa87e390be85922c7L, 0x2f557f2e960a0284L);
-    b.class_(false, false, true);
+    b.class_(false, false, false);
     // extends: HealthcareLanguage.structure.Organization
     b.super_(0x7f0568a28c1a4091L, 0xa87e390be85922c7L, 0x2f557f2e960a023dL);
     b.origin("r:e5bcaa7d-12f5-4ff3-b8b6-1218c56a72be(HealthcareLanguage.structure)/3410772130865480324");
@@ -152,7 +156,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.version(3);
     b.property("description", 0x2f557f2e960a027eL).type(PrimitiveTypeId.STRING).origin("3410772130865480318").done();
     b.aggregate("qualifications", 0x2f557f2e960a027fL).target(0x7f0568a28c1a4091L, 0xa87e390be85922c7L, 0x2f557f2e960a0280L).optional(true).ordered(true).multiple(true).origin("3410772130865480319").done();
-    b.aggregate("specialty", 0x2f95f283bc9898dbL).target(0x7f0568a28c1a4091L, 0xa87e390be85922c7L, 0x2f95f283bc9898d9L).optional(true).ordered(true).multiple(true).origin("3428913338931255515").done();
+    b.aggregate("specialties", 0x2f95f283bc9898dbL).target(0x7f0568a28c1a4091L, 0xa87e390be85922c7L, 0x2f95f283bc9898d9L).optional(true).ordered(true).multiple(true).origin("3428913338931255515").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForEmployeeRole() {
@@ -162,20 +166,28 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:e5bcaa7d-12f5-4ff3-b8b6-1218c56a72be(HealthcareLanguage.structure)/3410772130865480309");
     b.version(3);
     b.property("role", 0x2f557f2e960a0277L).type(MetaIdFactory.dataTypeId(0x7f0568a28c1a4091L, 0xa87e390be85922c7L, 0x2f557f2e960a0266L)).origin("3410772130865480311").done();
-    b.aggregate("employee", 0x2f557f2e960a0278L).target(0x7f0568a28c1a4091L, 0xa87e390be85922c7L, 0x2f557f2e960a0279L).optional(false).ordered(true).multiple(false).origin("3410772130865480312").done();
+    b.associate("employee", 0x1c392c4f11e2fc6aL).target(0x7f0568a28c1a4091L, 0xa87e390be85922c7L, 0x2f557f2e960a0279L).optional(false).origin("2033705424848616554").done();
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForHealthcareEntity() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("HealthcareLanguage", "HealthcareEntity", 0x7f0568a28c1a4091L, 0xa87e390be85922c7L, 0x1c392c4f11e2fc6eL);
+    b.class_(false, true, false);
+    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
+    b.origin("r:e5bcaa7d-12f5-4ff3-b8b6-1218c56a72be(HealthcareLanguage.structure)/2033705424848616558");
+    b.version(3);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForHealthcareSystem() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("HealthcareLanguage", "HealthcareSystem", 0x7f0568a28c1a4091L, 0xa87e390be85922c7L, 0x2f95f283bc994d0aL);
-    b.class_(false, false, false);
-    b.origin("r:e5bcaa7d-12f5-4ff3-b8b6-1218c56a72be(HealthcareLanguage.structure)/3428913338931301642");
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("HealthcareLanguage", "HealthcareSystem", 0x7f0568a28c1a4091L, 0xa87e390be85922c7L, 0x1c392c4f11e2fc6cL);
+    b.class_(false, false, true);
+    b.origin("r:e5bcaa7d-12f5-4ff3-b8b6-1218c56a72be(HealthcareLanguage.structure)/2033705424848616556");
     b.version(3);
-    b.aggregate("elements", 0x2f95f283bc994d0bL).target(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL).optional(true).ordered(true).multiple(true).origin("3428913338931301643").done();
+    b.aggregate("entities", 0x1c392c4f11e2fc72L).target(0x7f0568a28c1a4091L, 0xa87e390be85922c7L, 0x1c392c4f11e2fc6eL).optional(true).ordered(true).multiple(true).origin("2033705424848616562").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForHospital() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("HealthcareLanguage", "Hospital", 0x7f0568a28c1a4091L, 0xa87e390be85922c7L, 0x2f557f2e960a028bL);
-    b.class_(false, false, true);
+    b.class_(false, false, false);
     // extends: HealthcareLanguage.structure.Organization
     b.super_(0x7f0568a28c1a4091L, 0xa87e390be85922c7L, 0x2f557f2e960a023dL);
     b.origin("r:e5bcaa7d-12f5-4ff3-b8b6-1218c56a72be(HealthcareLanguage.structure)/3410772130865480331");
@@ -196,8 +208,9 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   }
   private static ConceptDescriptor createDescriptorForOrganization() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("HealthcareLanguage", "Organization", 0x7f0568a28c1a4091L, 0xa87e390be85922c7L, 0x2f557f2e960a023dL);
-    b.class_(false, true, true);
-    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
+    b.class_(false, true, false);
+    // extends: HealthcareLanguage.structure.HealthcareEntity
+    b.super_(0x7f0568a28c1a4091L, 0xa87e390be85922c7L, 0x1c392c4f11e2fc6eL);
     b.origin("r:e5bcaa7d-12f5-4ff3-b8b6-1218c56a72be(HealthcareLanguage.structure)/3410772130865480253");
     b.version(3);
     return b.create();
@@ -216,7 +229,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForPerson() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("HealthcareLanguage", "Person", 0x7f0568a28c1a4091L, 0xa87e390be85922c7L, 0x2f557f2e960a027aL);
     b.class_(false, false, false);
-    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
+    // extends: HealthcareLanguage.structure.HealthcareEntity
+    b.super_(0x7f0568a28c1a4091L, 0xa87e390be85922c7L, 0x1c392c4f11e2fc6eL);
     b.origin("r:e5bcaa7d-12f5-4ff3-b8b6-1218c56a72be(HealthcareLanguage.structure)/3410772130865480314");
     b.version(3);
     b.property("gender", 0x2f557f2e960a027cL).type(PrimitiveTypeId.BOOLEAN).origin("3410772130865480316").done();
