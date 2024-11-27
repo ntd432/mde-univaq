@@ -16,6 +16,7 @@
   <imports>
     <import index="fudv" ref="r:9006e6ce-991d-45e3-a20f-0deb45783955(jetbrains.mps.lang.feedback.problem.childAndProp.feedback)" />
     <import index="5xrc" ref="r:e5bcaa7d-12f5-4ff3-b8b6-1218c56a72be(HealthcareLanguage.structure)" />
+    <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
   </imports>
   <registry>
     <language id="033598a4-76a9-47e1-ac89-a300c0fceab8" name="jetbrains.mps.lang.feedback.problem">
@@ -44,6 +45,11 @@
       </concept>
       <concept id="5258059200641510853" name="jetbrains.mps.lang.messages.structure.LiteralMessageExpression" flags="ng" index="16N$OT">
         <property id="5258059200641510854" name="message" index="16N$OU" />
+      </concept>
+    </language>
+    <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
+        <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
     <language id="517077fd-e44f-4338-a475-1d29781dfdb8" name="jetbrains.mps.lang.feedback.skeleton">
@@ -95,6 +101,21 @@
       <node concept="1GjwBS" id="4N9BueVaZRb" role="3JXyrO">
         <ref role="sa$J1" to="fudv:1mFJTG7e$j" />
         <ref role="1Gj$d9" to="5xrc:2XlvMUm2wa2" resolve="issueDate" />
+      </node>
+    </node>
+  </node>
+  <node concept="3QByoM" id="2g45mm06SUj">
+    <property role="TrG5h" value="???_rFeedback" />
+    <ref role="3Z9TSV" to="5xrc:2XlvMUm2w9N" resolve="Department" />
+    <node concept="3QByp$" id="2g45mm06SUl" role="3QBEN7">
+      <node concept="16I2mz" id="2g45mm06SUm" role="16N$OO">
+        <node concept="16N$OT" id="2g45mm06SUn" role="16I2mt">
+          <property role="16N$OU" value="&quot;Department name already exists.&quot;" />
+        </node>
+      </node>
+      <node concept="1GjwBS" id="2g45mm06SUk" role="3JXyrO">
+        <ref role="sa$J1" to="fudv:1mFJTG7e$j" />
+        <ref role="1Gj$d9" to="tpck:h0TrG11" resolve="name" />
       </node>
     </node>
   </node>

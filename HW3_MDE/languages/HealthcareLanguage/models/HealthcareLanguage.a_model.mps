@@ -76,7 +76,7 @@
         </node>
       </node>
       <node concept="2TnRPt" id="1KTb4WhSYqD" role="2TnRQw">
-        <property role="TrG5h" value="Medical department" />
+        <property role="TrG5h" value="Medical Department" />
         <node concept="2TnRPr" id="1KTb4WhSYqE" role="2TnRPq">
           <property role="TrG5h" value="Principal Doctor" />
           <ref role="dQX0_" node="1KTb4WhSUsh" resolve="Gladis" />
