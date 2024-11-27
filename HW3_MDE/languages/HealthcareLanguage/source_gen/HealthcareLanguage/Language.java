@@ -10,6 +10,8 @@ import jetbrains.mps.smodel.runtime.ILanguageAspect;
 import jetbrains.mps.core.aspects.feedback.api.FeedbackAspect;
 import HealthcareLanguage.feedback.GeneratedFeedbackAspectFeedback;
 import jetbrains.mps.smodel.runtime.ConstraintsAspectDescriptor;
+import jetbrains.mps.openapi.editor.descriptor.EditorAspectDescriptor;
+import HealthcareLanguage.editor.EditorAspectDescriptorImpl;
 import jetbrains.mps.smodel.runtime.StructureAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConceptPresentationAspect;
 import HealthcareLanguage.structure.ConceptPresentationAspectImpl;
@@ -48,6 +50,9 @@ public class Language extends LanguageRuntime {
     }
     if (aspectClass == ConstraintsAspectDescriptor.class) {
       return aspectClass.cast(new HealthcareLanguage.constraints.ConstraintsAspectDescriptor());
+    }
+    if (aspectClass == EditorAspectDescriptor.class) {
+      return aspectClass.cast(new EditorAspectDescriptorImpl());
     }
     if (aspectClass == StructureAspectDescriptor.class) {
       return aspectClass.cast(new HealthcareLanguage.structure.StructureAspectDescriptor());

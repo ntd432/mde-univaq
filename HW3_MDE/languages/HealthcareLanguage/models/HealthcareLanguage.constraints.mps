@@ -17,11 +17,13 @@
     <import index="prp3" ref="r:52ea8481-08b2-4cbd-ad9d-1b42825f7d09(jetbrains.mps.lang.constraints.rules.kinds.constraints)" />
     <import index="5xrc" ref="r:e5bcaa7d-12f5-4ff3-b8b6-1218c56a72be(HealthcareLanguage.structure)" implicit="true" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
+    <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
       <concept id="1080223426719" name="jetbrains.mps.baseLanguage.structure.OrExpression" flags="nn" index="22lmx$" />
       <concept id="1153417849900" name="jetbrains.mps.baseLanguage.structure.GreaterThanOrEqualsExpression" flags="nn" index="2d3UOw" />
+      <concept id="1153422305557" name="jetbrains.mps.baseLanguage.structure.LessThanOrEqualsExpression" flags="nn" index="2dkUwp" />
       <concept id="4836112446988635817" name="jetbrains.mps.baseLanguage.structure.UndefinedType" flags="in" index="2jxLKc" />
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
       <concept id="1173175405605" name="jetbrains.mps.baseLanguage.structure.ArrayAccessExpression" flags="nn" index="AH0OO">
@@ -121,15 +123,25 @@
       <concept id="1177026924588" name="jetbrains.mps.lang.smodel.structure.RefConcept_Reference" flags="nn" index="chp4Y">
         <reference id="1177026940964" name="conceptDeclaration" index="cht4Q" />
       </concept>
+      <concept id="1138411891628" name="jetbrains.mps.lang.smodel.structure.SNodeOperation" flags="nn" index="eCIE_">
+        <child id="1144104376918" name="parameter" index="1xVPHs" />
+      </concept>
       <concept id="1143234257716" name="jetbrains.mps.lang.smodel.structure.Node_GetModelOperation" flags="nn" index="I4A8Y" />
       <concept id="1171323947159" name="jetbrains.mps.lang.smodel.structure.Model_NodesOperation" flags="nn" index="2SmgA7">
         <child id="1758937410080001570" name="conceptArgument" index="1dBWTz" />
+      </concept>
+      <concept id="1171407110247" name="jetbrains.mps.lang.smodel.structure.Node_GetAncestorOperation" flags="nn" index="2Xjw5R" />
+      <concept id="1144101972840" name="jetbrains.mps.lang.smodel.structure.OperationParm_Concept" flags="ng" index="1xMEDy">
+        <child id="1207343664468" name="conceptArgument" index="ri$Ld" />
       </concept>
       <concept id="1138056022639" name="jetbrains.mps.lang.smodel.structure.SPropertyAccess" flags="nn" index="3TrcHB">
         <reference id="1138056395725" name="property" index="3TsBF5" />
       </concept>
       <concept id="1138056143562" name="jetbrains.mps.lang.smodel.structure.SLinkAccess" flags="nn" index="3TrEf2">
         <reference id="1138056516764" name="link" index="3Tt5mk" />
+      </concept>
+      <concept id="1138056282393" name="jetbrains.mps.lang.smodel.structure.SLinkListAccess" flags="nn" index="3Tsc0h">
+        <reference id="1138056546658" name="link" index="3TtcxE" />
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
@@ -152,6 +164,7 @@
         <child id="1204796294226" name="closure" index="23t8la" />
       </concept>
       <concept id="1204980550705" name="jetbrains.mps.baseLanguage.collections.structure.VisitAllOperation" flags="nn" index="2es0OD" />
+      <concept id="1162935959151" name="jetbrains.mps.baseLanguage.collections.structure.GetSizeOperation" flags="nn" index="34oBXx" />
       <concept id="1202120902084" name="jetbrains.mps.baseLanguage.collections.structure.WhereOperation" flags="nn" index="3zZkjj" />
     </language>
   </registry>
@@ -573,6 +586,66 @@
                     <property role="Xl_RC" value="^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/[0-9]{4}$" />
                   </node>
                 </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="1M2fIO" id="2g45mm02szn">
+    <ref role="1M2myG" to="5xrc:2XlvMUm2w9N" resolve="Department" />
+    <node concept="EnEH3" id="2g45mm02szp" role="1MhHOB">
+      <ref role="EomxK" to="tpck:h0TrG11" resolve="name" />
+      <node concept="QB0g5" id="2g45mm02SvA" role="QCWH9">
+        <node concept="3clFbS" id="2g45mm02SvB" role="2VODD2">
+          <node concept="3cpWs6" id="2g45mm04J8C" role="3cqZAp">
+            <node concept="2dkUwp" id="2g45mm05RdV" role="3cqZAk">
+              <node concept="2OqwBi" id="2g45mm05zB5" role="3uHU7B">
+                <node concept="2OqwBi" id="2g45mm055TZ" role="2Oq$k0">
+                  <node concept="2OqwBi" id="2g45mm04OCZ" role="2Oq$k0">
+                    <node concept="2OqwBi" id="2g45mm04LnO" role="2Oq$k0">
+                      <node concept="EsrRn" id="2g45mm04Jgu" role="2Oq$k0" />
+                      <node concept="2Xjw5R" id="2g45mm04LTq" role="2OqNvi">
+                        <node concept="1xMEDy" id="2g45mm04LTs" role="1xVPHs">
+                          <node concept="chp4Y" id="2g45mm04N8$" role="ri$Ld">
+                            <ref role="cht4Q" to="5xrc:2XlvMUm2wab" resolve="Hospital" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="3Tsc0h" id="2g45mm04Pbv" role="2OqNvi">
+                      <ref role="3TtcxE" to="5xrc:2XlvMUm2wae" resolve="departments" />
+                    </node>
+                  </node>
+                  <node concept="3zZkjj" id="2g45mm05bqx" role="2OqNvi">
+                    <node concept="1bVj0M" id="2g45mm05bqz" role="23t8la">
+                      <node concept="3clFbS" id="2g45mm05bq$" role="1bW5cS">
+                        <node concept="3clFbF" id="2g45mm05eMb" role="3cqZAp">
+                          <node concept="17R0WA" id="2g45mm05v_M" role="3clFbG">
+                            <node concept="1Wqviy" id="2g45mm05yNB" role="3uHU7w" />
+                            <node concept="2OqwBi" id="2g45mm05iRf" role="3uHU7B">
+                              <node concept="37vLTw" id="2g45mm05eMa" role="2Oq$k0">
+                                <ref role="3cqZAo" node="2g45mm05bq_" resolve="it" />
+                              </node>
+                              <node concept="3TrcHB" id="2g45mm05oml" role="2OqNvi">
+                                <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="gl6BB" id="2g45mm05bq_" role="1bW2Oz">
+                        <property role="TrG5h" value="it" />
+                        <node concept="2jxLKc" id="2g45mm05bqA" role="1tU5fm" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="34oBXx" id="2g45mm05_mx" role="2OqNvi" />
+              </node>
+              <node concept="3cmrfG" id="2g45mm05KqD" role="3uHU7w">
+                <property role="3cmrfH" value="1" />
               </node>
             </node>
           </node>

@@ -21,10 +21,12 @@ public class ConstraintsAspectDescriptor extends BaseConstraintsAspectDescriptor
       case 0:
         return new Appoinment_Constraints();
       case 1:
+        return new Department_Constraints();
+      case 2:
         return new Qualification_Constraints();
       default:
     }
     return new BaseConstraintsDescriptor(concept);
   }
-  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x7f0568a28c1a4091L, 0xa87e390be85922c7L, 0x2f557f2e960a023fL), MetaIdFactory.conceptId(0x7f0568a28c1a4091L, 0xa87e390be85922c7L, 0x2f557f2e960a0280L)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x7f0568a28c1a4091L, 0xa87e390be85922c7L, 0x2f557f2e960a023fL), MetaIdFactory.conceptId(0x7f0568a28c1a4091L, 0xa87e390be85922c7L, 0x2f557f2e960a0273L), MetaIdFactory.conceptId(0x7f0568a28c1a4091L, 0xa87e390be85922c7L, 0x2f557f2e960a0280L)).seal();
 }
