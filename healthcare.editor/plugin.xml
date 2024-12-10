@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated Healthcare -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="Healthcare.presentation.HealthcareModelWizardID"
+            name="%_UI_HealthcareModelWizard_label"
+            class="Healthcare.presentation.HealthcareModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/HealthcareModelFile.gif">
+         <description>%_UI_HealthcareModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated Healthcare -->
+      <editor
+            id="Healthcare.presentation.HealthcareEditorID"
+            name="%_UI_HealthcareEditor_label"
+            icon="icons/full/obj16/HealthcareModelFile.gif"
+            extensions="healthcare"
+            class="Healthcare.presentation.HealthcareEditor"
+            contributorClass="Healthcare.presentation.HealthcareActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>
