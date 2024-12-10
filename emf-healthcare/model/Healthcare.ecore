@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="Healthcare" nsURI="https://it.univaq.disim.it" nsPrefix="H">
+  <eClassifiers xsi:type="ecore:EClass" name="NamedElement" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Organization" abstract="true" eSuperTypes="#//NamedElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Condition" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" eType="#//ConditionStatus"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="severity" eType="#//ConditionSeverity"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Person" abstract="true" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="gender" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EducationalInstitute" eSuperTypes="#//Organization"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Department" eSuperTypes="#//NamedElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Hospital" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="staff" upperBound="-1"
+        eType="#//EmployeeRole"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Patient" eSuperTypes="#//Person">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="condition" upperBound="-1"
+        eType="#//Condition"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="observation" upperBound="-1"
+        eType="#//Observation"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Observation" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//ObservationType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Employee" eSuperTypes="#//Person">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="specialty" upperBound="-1"
+        eType="#//EmployeeSpecialty"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="qualification" upperBound="-1"
+        eType="#//Qualification"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Qualification" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="issueDate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="issuer" eType="#//EducationalInstitute"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EmployeeRole" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="role" eType="#//Role"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="employee" eType="#//Employee"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Appointment">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="start" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="end" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" lowerBound="1"
+        eType="#//AppointmentStatus"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//AppointmentType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="practitioner" lowerBound="1"
+        eType="#//Employee"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="patient" lowerBound="1"
+        eType="#//Patient"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ConditionStatus">
+    <eLiterals name="Active"/>
+    <eLiterals name="Recurrence" value="1" literal=""/>
+    <eLiterals name="Inactive" value="2"/>
+    <eLiterals name="Resolved" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ConditionSeverity">
+    <eLiterals name="Severe"/>
+    <eLiterals name="Moderate" value="1"/>
+    <eLiterals name="Mild" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ObservationType">
+    <eLiterals name="SpO2"/>
+    <eLiterals name="BloodPressure" value="1"/>
+    <eLiterals name="HeartRate" value="2"/>
+    <eLiterals name="XRay" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="AppointmentType">
+    <eLiterals name="Routine"/>
+    <eLiterals name="Walking" value="1"/>
+    <eLiterals name="Checkup" value="2"/>
+    <eLiterals name="Followup" value="3"/>
+    <eLiterals name="Emergency" value="4"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="EmployeeSpecialty">
+    <eLiterals name="Cardiology"/>
+    <eLiterals name="Dermatology" value="1"/>
+    <eLiterals name="Neurology" value="2"/>
+    <eLiterals name="Pediatry" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="AppointmentStatus">
+    <eLiterals name="Booked"/>
+    <eLiterals name="Arrived" value="1"/>
+    <eLiterals name="Fulfilled" value="2"/>
+    <eLiterals name="Cancelled" value="3"/>
+    <eLiterals name="NoShow" value="4"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Role">
+    <eLiterals name="Doctor"/>
+    <eLiterals name="Nurse" value="1"/>
+    <eLiterals name="Pharmacist" value="2"/>
+    <eLiterals name="HospitalManager" value="3"/>
+    <eLiterals name="Janitor" value="4"/>
+    <eLiterals name="Intern" value="5"/>
+  </eClassifiers>
+</ecore:EPackage>
