@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Healthcare-plugin
+Bundle-SymbolicName: healthcare-plugin;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Require-Bundle: org.eclipse.ui,
+ healthcare;bundle-version="1.0.0",
+ healthcare.edit;bundle-version="1.0.0",
+ healthcare.editor;bundle-version="1.0.0"
+Automatic-Module-Name: healthcare.plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-21
