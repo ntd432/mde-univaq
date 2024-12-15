@@ -35,7 +35,7 @@ public class ObservationImpl extends NamedElementImpl implements Observation {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final float VALUE_EDEFAULT = 0.0F;
+	protected static final String VALUE_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
@@ -45,7 +45,7 @@ public class ObservationImpl extends NamedElementImpl implements Observation {
 	 * @generated
 	 * @ordered
 	 */
-	protected float value = VALUE_EDEFAULT;
+	protected String value = VALUE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getType() <em>Type</em>}' attribute.
@@ -92,7 +92,7 @@ public class ObservationImpl extends NamedElementImpl implements Observation {
 	 * @generated
 	 */
 	@Override
-	public float getValue() {
+	public String getValue() {
 		return value;
 	}
 
@@ -102,8 +102,8 @@ public class ObservationImpl extends NamedElementImpl implements Observation {
 	 * @generated
 	 */
 	@Override
-	public void setValue(float newValue) {
-		float oldValue = value;
+	public void setValue(String newValue) {
+		String oldValue = value;
 		value = newValue;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, HealthcarePackage.OBSERVATION__VALUE, oldValue, value));
@@ -157,7 +157,7 @@ public class ObservationImpl extends NamedElementImpl implements Observation {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case HealthcarePackage.OBSERVATION__VALUE:
-				setValue((Float)newValue);
+				setValue((String)newValue);
 				return;
 			case HealthcarePackage.OBSERVATION__TYPE:
 				setType((ObservationType)newValue);
@@ -193,7 +193,7 @@ public class ObservationImpl extends NamedElementImpl implements Observation {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case HealthcarePackage.OBSERVATION__VALUE:
-				return value != VALUE_EDEFAULT;
+				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
 			case HealthcarePackage.OBSERVATION__TYPE:
 				return type != TYPE_EDEFAULT;
 		}

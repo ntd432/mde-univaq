@@ -23,25 +23,25 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface Patient extends Person {
 	/**
-	 * Returns the value of the '<em><b>Condition</b></em>' reference list.
+	 * Returns the value of the '<em><b>Condition</b></em>' containment reference list.
 	 * The list contents are of type {@link Healthcare.Condition}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Condition</em>' reference list.
+	 * @return the value of the '<em>Condition</em>' containment reference list.
 	 * @see Healthcare.HealthcarePackage#getPatient_Condition()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<Condition> getCondition();
 
 	/**
-	 * Returns the value of the '<em><b>Observation</b></em>' reference list.
+	 * Returns the value of the '<em><b>Observation</b></em>' containment reference list.
 	 * The list contents are of type {@link Healthcare.Observation}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Observation</em>' reference list.
+	 * @return the value of the '<em>Observation</em>' containment reference list.
 	 * @see Healthcare.HealthcarePackage#getPatient_Observation()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<Observation> getObservation();

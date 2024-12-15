@@ -95,6 +95,61 @@ public interface HealthcarePackage extends EPackage {
 	int NAMED_ELEMENT_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link Healthcare.impl.HealthcareSystemImpl <em>System</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see Healthcare.impl.HealthcareSystemImpl
+	 * @see Healthcare.impl.HealthcarePackageImpl#getHealthcareSystem()
+	 * @generated
+	 */
+	int HEALTHCARE_SYSTEM = 1;
+
+	/**
+	 * The feature id for the '<em><b>Organizations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HEALTHCARE_SYSTEM__ORGANIZATIONS = 0;
+
+	/**
+	 * The feature id for the '<em><b>People</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HEALTHCARE_SYSTEM__PEOPLE = 1;
+
+	/**
+	 * The feature id for the '<em><b>Appointments</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HEALTHCARE_SYSTEM__APPOINTMENTS = 2;
+
+	/**
+	 * The number of structural features of the '<em>System</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HEALTHCARE_SYSTEM_FEATURE_COUNT = 3;
+
+	/**
+	 * The number of operations of the '<em>System</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HEALTHCARE_SYSTEM_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link Healthcare.impl.OrganizationImpl <em>Organization</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -102,7 +157,7 @@ public interface HealthcarePackage extends EPackage {
 	 * @see Healthcare.impl.HealthcarePackageImpl#getOrganization()
 	 * @generated
 	 */
-	int ORGANIZATION = 1;
+	int ORGANIZATION = 2;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -139,7 +194,7 @@ public interface HealthcarePackage extends EPackage {
 	 * @see Healthcare.impl.HealthcarePackageImpl#getCondition()
 	 * @generated
 	 */
-	int CONDITION = 2;
+	int CONDITION = 3;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -194,7 +249,7 @@ public interface HealthcarePackage extends EPackage {
 	 * @see Healthcare.impl.HealthcarePackageImpl#getPerson()
 	 * @generated
 	 */
-	int PERSON = 3;
+	int PERSON = 4;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -240,7 +295,7 @@ public interface HealthcarePackage extends EPackage {
 	 * @see Healthcare.impl.HealthcarePackageImpl#getEducationalInstitute()
 	 * @generated
 	 */
-	int EDUCATIONAL_INSTITUTE = 4;
+	int EDUCATIONAL_INSTITUTE = 5;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -277,7 +332,7 @@ public interface HealthcarePackage extends EPackage {
 	 * @see Healthcare.impl.HealthcarePackageImpl#getDepartment()
 	 * @generated
 	 */
-	int DEPARTMENT = 5;
+	int DEPARTMENT = 6;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -289,13 +344,22 @@ public interface HealthcarePackage extends EPackage {
 	int DEPARTMENT__NAME = NAMED_ELEMENT__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Staff</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPARTMENT__STAFF = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Department</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DEPARTMENT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 0;
+	int DEPARTMENT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Department</em>' class.
@@ -314,7 +378,7 @@ public interface HealthcarePackage extends EPackage {
 	 * @see Healthcare.impl.HealthcarePackageImpl#getHospital()
 	 * @generated
 	 */
-	int HOSPITAL = 6;
+	int HOSPITAL = 7;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -323,16 +387,16 @@ public interface HealthcarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HOSPITAL__NAME = NAMED_ELEMENT__NAME;
+	int HOSPITAL__NAME = ORGANIZATION__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Staff</b></em>' reference list.
+	 * The feature id for the '<em><b>Departments</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HOSPITAL__STAFF = NAMED_ELEMENT_FEATURE_COUNT + 0;
+	int HOSPITAL__DEPARTMENTS = ORGANIZATION_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Hospital</em>' class.
@@ -341,7 +405,7 @@ public interface HealthcarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HOSPITAL_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
+	int HOSPITAL_FEATURE_COUNT = ORGANIZATION_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Hospital</em>' class.
@@ -350,7 +414,7 @@ public interface HealthcarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HOSPITAL_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+	int HOSPITAL_OPERATION_COUNT = ORGANIZATION_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link Healthcare.impl.PatientImpl <em>Patient</em>}' class.
@@ -360,7 +424,7 @@ public interface HealthcarePackage extends EPackage {
 	 * @see Healthcare.impl.HealthcarePackageImpl#getPatient()
 	 * @generated
 	 */
-	int PATIENT = 7;
+	int PATIENT = 8;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -381,7 +445,7 @@ public interface HealthcarePackage extends EPackage {
 	int PATIENT__GENDER = PERSON__GENDER;
 
 	/**
-	 * The feature id for the '<em><b>Condition</b></em>' reference list.
+	 * The feature id for the '<em><b>Condition</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -390,7 +454,7 @@ public interface HealthcarePackage extends EPackage {
 	int PATIENT__CONDITION = PERSON_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Observation</b></em>' reference list.
+	 * The feature id for the '<em><b>Observation</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -424,7 +488,7 @@ public interface HealthcarePackage extends EPackage {
 	 * @see Healthcare.impl.HealthcarePackageImpl#getObservation()
 	 * @generated
 	 */
-	int OBSERVATION = 8;
+	int OBSERVATION = 9;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -479,7 +543,7 @@ public interface HealthcarePackage extends EPackage {
 	 * @see Healthcare.impl.HealthcarePackageImpl#getEmployee()
 	 * @generated
 	 */
-	int EMPLOYEE = 9;
+	int EMPLOYEE = 10;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -509,7 +573,7 @@ public interface HealthcarePackage extends EPackage {
 	int EMPLOYEE__SPECIALTY = PERSON_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Qualification</b></em>' reference list.
+	 * The feature id for the '<em><b>Qualification</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -543,7 +607,7 @@ public interface HealthcarePackage extends EPackage {
 	 * @see Healthcare.impl.HealthcarePackageImpl#getQualification()
 	 * @generated
 	 */
-	int QUALIFICATION = 10;
+	int QUALIFICATION = 11;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -598,7 +662,7 @@ public interface HealthcarePackage extends EPackage {
 	 * @see Healthcare.impl.HealthcarePackageImpl#getEmployeeRole()
 	 * @generated
 	 */
-	int EMPLOYEE_ROLE = 11;
+	int EMPLOYEE_ROLE = 12;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -653,7 +717,7 @@ public interface HealthcarePackage extends EPackage {
 	 * @see Healthcare.impl.HealthcarePackageImpl#getAppointment()
 	 * @generated
 	 */
-	int APPOINTMENT = 12;
+	int APPOINTMENT = 13;
 
 	/**
 	 * The feature id for the '<em><b>Start</b></em>' attribute.
@@ -735,7 +799,7 @@ public interface HealthcarePackage extends EPackage {
 	 * @see Healthcare.impl.HealthcarePackageImpl#getConditionStatus()
 	 * @generated
 	 */
-	int CONDITION_STATUS = 13;
+	int CONDITION_STATUS = 14;
 
 	/**
 	 * The meta object id for the '{@link Healthcare.ConditionSeverity <em>Condition Severity</em>}' enum.
@@ -745,7 +809,7 @@ public interface HealthcarePackage extends EPackage {
 	 * @see Healthcare.impl.HealthcarePackageImpl#getConditionSeverity()
 	 * @generated
 	 */
-	int CONDITION_SEVERITY = 14;
+	int CONDITION_SEVERITY = 15;
 
 	/**
 	 * The meta object id for the '{@link Healthcare.ObservationType <em>Observation Type</em>}' enum.
@@ -755,7 +819,7 @@ public interface HealthcarePackage extends EPackage {
 	 * @see Healthcare.impl.HealthcarePackageImpl#getObservationType()
 	 * @generated
 	 */
-	int OBSERVATION_TYPE = 15;
+	int OBSERVATION_TYPE = 16;
 
 	/**
 	 * The meta object id for the '{@link Healthcare.AppointmentType <em>Appointment Type</em>}' enum.
@@ -765,7 +829,7 @@ public interface HealthcarePackage extends EPackage {
 	 * @see Healthcare.impl.HealthcarePackageImpl#getAppointmentType()
 	 * @generated
 	 */
-	int APPOINTMENT_TYPE = 16;
+	int APPOINTMENT_TYPE = 17;
 
 	/**
 	 * The meta object id for the '{@link Healthcare.EmployeeSpecialty <em>Employee Specialty</em>}' enum.
@@ -775,7 +839,7 @@ public interface HealthcarePackage extends EPackage {
 	 * @see Healthcare.impl.HealthcarePackageImpl#getEmployeeSpecialty()
 	 * @generated
 	 */
-	int EMPLOYEE_SPECIALTY = 17;
+	int EMPLOYEE_SPECIALTY = 18;
 
 	/**
 	 * The meta object id for the '{@link Healthcare.AppointmentStatus <em>Appointment Status</em>}' enum.
@@ -785,7 +849,7 @@ public interface HealthcarePackage extends EPackage {
 	 * @see Healthcare.impl.HealthcarePackageImpl#getAppointmentStatus()
 	 * @generated
 	 */
-	int APPOINTMENT_STATUS = 18;
+	int APPOINTMENT_STATUS = 19;
 
 	/**
 	 * The meta object id for the '{@link Healthcare.Role <em>Role</em>}' enum.
@@ -795,7 +859,7 @@ public interface HealthcarePackage extends EPackage {
 	 * @see Healthcare.impl.HealthcarePackageImpl#getRole()
 	 * @generated
 	 */
-	int ROLE = 19;
+	int ROLE = 20;
 
 
 	/**
@@ -818,6 +882,49 @@ public interface HealthcarePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getNamedElement_Name();
+
+	/**
+	 * Returns the meta object for class '{@link Healthcare.HealthcareSystem <em>System</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>System</em>'.
+	 * @see Healthcare.HealthcareSystem
+	 * @generated
+	 */
+	EClass getHealthcareSystem();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link Healthcare.HealthcareSystem#getOrganizations <em>Organizations</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Organizations</em>'.
+	 * @see Healthcare.HealthcareSystem#getOrganizations()
+	 * @see #getHealthcareSystem()
+	 * @generated
+	 */
+	EReference getHealthcareSystem_Organizations();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link Healthcare.HealthcareSystem#getPeople <em>People</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>People</em>'.
+	 * @see Healthcare.HealthcareSystem#getPeople()
+	 * @see #getHealthcareSystem()
+	 * @generated
+	 */
+	EReference getHealthcareSystem_People();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link Healthcare.HealthcareSystem#getAppointments <em>Appointments</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Appointments</em>'.
+	 * @see Healthcare.HealthcareSystem#getAppointments()
+	 * @see #getHealthcareSystem()
+	 * @generated
+	 */
+	EReference getHealthcareSystem_Appointments();
 
 	/**
 	 * Returns the meta object for class '{@link Healthcare.Organization <em>Organization</em>}'.
@@ -903,6 +1010,17 @@ public interface HealthcarePackage extends EPackage {
 	EClass getDepartment();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link Healthcare.Department#getStaff <em>Staff</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Staff</em>'.
+	 * @see Healthcare.Department#getStaff()
+	 * @see #getDepartment()
+	 * @generated
+	 */
+	EReference getDepartment_Staff();
+
+	/**
 	 * Returns the meta object for class '{@link Healthcare.Hospital <em>Hospital</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -913,15 +1031,15 @@ public interface HealthcarePackage extends EPackage {
 	EClass getHospital();
 
 	/**
-	 * Returns the meta object for the reference list '{@link Healthcare.Hospital#getStaff <em>Staff</em>}'.
+	 * Returns the meta object for the containment reference list '{@link Healthcare.Hospital#getDepartments <em>Departments</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Staff</em>'.
-	 * @see Healthcare.Hospital#getStaff()
+	 * @return the meta object for the containment reference list '<em>Departments</em>'.
+	 * @see Healthcare.Hospital#getDepartments()
 	 * @see #getHospital()
 	 * @generated
 	 */
-	EReference getHospital_Staff();
+	EReference getHospital_Departments();
 
 	/**
 	 * Returns the meta object for class '{@link Healthcare.Patient <em>Patient</em>}'.
@@ -934,10 +1052,10 @@ public interface HealthcarePackage extends EPackage {
 	EClass getPatient();
 
 	/**
-	 * Returns the meta object for the reference list '{@link Healthcare.Patient#getCondition <em>Condition</em>}'.
+	 * Returns the meta object for the containment reference list '{@link Healthcare.Patient#getCondition <em>Condition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Condition</em>'.
+	 * @return the meta object for the containment reference list '<em>Condition</em>'.
 	 * @see Healthcare.Patient#getCondition()
 	 * @see #getPatient()
 	 * @generated
@@ -945,10 +1063,10 @@ public interface HealthcarePackage extends EPackage {
 	EReference getPatient_Condition();
 
 	/**
-	 * Returns the meta object for the reference list '{@link Healthcare.Patient#getObservation <em>Observation</em>}'.
+	 * Returns the meta object for the containment reference list '{@link Healthcare.Patient#getObservation <em>Observation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Observation</em>'.
+	 * @return the meta object for the containment reference list '<em>Observation</em>'.
 	 * @see Healthcare.Patient#getObservation()
 	 * @see #getPatient()
 	 * @generated
@@ -1009,10 +1127,10 @@ public interface HealthcarePackage extends EPackage {
 	EAttribute getEmployee_Specialty();
 
 	/**
-	 * Returns the meta object for the reference list '{@link Healthcare.Employee#getQualification <em>Qualification</em>}'.
+	 * Returns the meta object for the containment reference list '{@link Healthcare.Employee#getQualification <em>Qualification</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Qualification</em>'.
+	 * @return the meta object for the containment reference list '<em>Qualification</em>'.
 	 * @see Healthcare.Employee#getQualification()
 	 * @see #getEmployee()
 	 * @generated
@@ -1271,6 +1389,40 @@ public interface HealthcarePackage extends EPackage {
 		EAttribute NAMED_ELEMENT__NAME = eINSTANCE.getNamedElement_Name();
 
 		/**
+		 * The meta object literal for the '{@link Healthcare.impl.HealthcareSystemImpl <em>System</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see Healthcare.impl.HealthcareSystemImpl
+		 * @see Healthcare.impl.HealthcarePackageImpl#getHealthcareSystem()
+		 * @generated
+		 */
+		EClass HEALTHCARE_SYSTEM = eINSTANCE.getHealthcareSystem();
+
+		/**
+		 * The meta object literal for the '<em><b>Organizations</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference HEALTHCARE_SYSTEM__ORGANIZATIONS = eINSTANCE.getHealthcareSystem_Organizations();
+
+		/**
+		 * The meta object literal for the '<em><b>People</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference HEALTHCARE_SYSTEM__PEOPLE = eINSTANCE.getHealthcareSystem_People();
+
+		/**
+		 * The meta object literal for the '<em><b>Appointments</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference HEALTHCARE_SYSTEM__APPOINTMENTS = eINSTANCE.getHealthcareSystem_Appointments();
+
+		/**
 		 * The meta object literal for the '{@link Healthcare.impl.OrganizationImpl <em>Organization</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1345,6 +1497,14 @@ public interface HealthcarePackage extends EPackage {
 		EClass DEPARTMENT = eINSTANCE.getDepartment();
 
 		/**
+		 * The meta object literal for the '<em><b>Staff</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DEPARTMENT__STAFF = eINSTANCE.getDepartment_Staff();
+
+		/**
 		 * The meta object literal for the '{@link Healthcare.impl.HospitalImpl <em>Hospital</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1355,12 +1515,12 @@ public interface HealthcarePackage extends EPackage {
 		EClass HOSPITAL = eINSTANCE.getHospital();
 
 		/**
-		 * The meta object literal for the '<em><b>Staff</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Departments</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference HOSPITAL__STAFF = eINSTANCE.getHospital_Staff();
+		EReference HOSPITAL__DEPARTMENTS = eINSTANCE.getHospital_Departments();
 
 		/**
 		 * The meta object literal for the '{@link Healthcare.impl.PatientImpl <em>Patient</em>}' class.
@@ -1373,7 +1533,7 @@ public interface HealthcarePackage extends EPackage {
 		EClass PATIENT = eINSTANCE.getPatient();
 
 		/**
-		 * The meta object literal for the '<em><b>Condition</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Condition</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -1381,7 +1541,7 @@ public interface HealthcarePackage extends EPackage {
 		EReference PATIENT__CONDITION = eINSTANCE.getPatient_Condition();
 
 		/**
-		 * The meta object literal for the '<em><b>Observation</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Observation</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -1433,7 +1593,7 @@ public interface HealthcarePackage extends EPackage {
 		EAttribute EMPLOYEE__SPECIALTY = eINSTANCE.getEmployee_Specialty();
 
 		/**
-		 * The meta object literal for the '<em><b>Qualification</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Qualification</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

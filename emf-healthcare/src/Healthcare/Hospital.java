@@ -13,24 +13,24 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link Healthcare.Hospital#getStaff <em>Staff</em>}</li>
+ *   <li>{@link Healthcare.Hospital#getDepartments <em>Departments</em>}</li>
  * </ul>
  *
  * @see Healthcare.HealthcarePackage#getHospital()
  * @model
  * @generated
  */
-public interface Hospital extends NamedElement {
+public interface Hospital extends Organization {
 	/**
-	 * Returns the value of the '<em><b>Staff</b></em>' reference list.
-	 * The list contents are of type {@link Healthcare.EmployeeRole}.
+	 * Returns the value of the '<em><b>Departments</b></em>' containment reference list.
+	 * The list contents are of type {@link Healthcare.Department}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Staff</em>' reference list.
-	 * @see Healthcare.HealthcarePackage#getHospital_Staff()
-	 * @model
+	 * @return the value of the '<em>Departments</em>' containment reference list.
+	 * @see Healthcare.HealthcarePackage#getHospital_Departments()
+	 * @model containment="true"
 	 * @generated
 	 */
-	EList<EmployeeRole> getStaff();
+	EList<Department> getDepartments();
 
 } // Hospital

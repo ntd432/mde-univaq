@@ -72,6 +72,12 @@ public class HealthcareSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case HealthcarePackage.HEALTHCARE_SYSTEM: {
+				HealthcareSystem healthcareSystem = (HealthcareSystem)theEObject;
+				T result = caseHealthcareSystem(healthcareSystem);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case HealthcarePackage.ORGANIZATION: {
 				Organization organization = (Organization)theEObject;
 				T result = caseOrganization(organization);
@@ -111,6 +117,7 @@ public class HealthcareSwitch<T> extends Switch<T> {
 			case HealthcarePackage.HOSPITAL: {
 				Hospital hospital = (Hospital)theEObject;
 				T result = caseHospital(hospital);
+				if (result == null) result = caseOrganization(hospital);
 				if (result == null) result = caseNamedElement(hospital);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -174,6 +181,21 @@ public class HealthcareSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseNamedElement(NamedElement object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>System</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>System</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseHealthcareSystem(HealthcareSystem object) {
 		return null;
 	}
 

@@ -2,7 +2,15 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="Healthcare" nsURI="https://it.univaq.disim.it" nsPrefix="H">
   <eClassifiers xsi:type="ecore:EClass" name="NamedElement" abstract="true">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HealthcareSystem">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="organizations" upperBound="-1"
+        eType="#//Organization" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="people" upperBound="-1"
+        eType="#//Person" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="appointments" upperBound="-1"
+        eType="#//Appointment" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Organization" abstract="true" eSuperTypes="#//NamedElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="Condition" eSuperTypes="#//NamedElement">
@@ -13,26 +21,29 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="gender" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EducationalInstitute" eSuperTypes="#//Organization"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Department" eSuperTypes="#//NamedElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Hospital" eSuperTypes="#//NamedElement">
+  <eClassifiers xsi:type="ecore:EClass" name="Department" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="staff" upperBound="-1"
-        eType="#//EmployeeRole"/>
+        eType="#//EmployeeRole" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Hospital" eSuperTypes="#//Organization">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="departments" upperBound="-1"
+        eType="#//Department" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Patient" eSuperTypes="#//Person">
     <eStructuralFeatures xsi:type="ecore:EReference" name="condition" upperBound="-1"
-        eType="#//Condition"/>
+        eType="#//Condition" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="observation" upperBound="-1"
-        eType="#//Observation"/>
+        eType="#//Observation" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Observation" eSuperTypes="#//NamedElement">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//ObservationType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Employee" eSuperTypes="#//Person">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="specialty" upperBound="-1"
         eType="#//EmployeeSpecialty"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="qualification" upperBound="-1"
-        eType="#//Qualification"/>
+        eType="#//Qualification" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Qualification" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="issueDate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
@@ -55,7 +66,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ConditionStatus">
     <eLiterals name="Active"/>
-    <eLiterals name="Recurrence" value="1" literal=""/>
+    <eLiterals name="Recurrence" value="1" literal="Recurrence"/>
     <eLiterals name="Inactive" value="2"/>
     <eLiterals name="Resolved" value="3"/>
   </eClassifiers>

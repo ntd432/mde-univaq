@@ -72,6 +72,10 @@ public class HealthcareAdapterFactory extends AdapterFactoryImpl {
 				return createNamedElementAdapter();
 			}
 			@Override
+			public Adapter caseHealthcareSystem(HealthcareSystem object) {
+				return createHealthcareSystemAdapter();
+			}
+			@Override
 			public Adapter caseOrganization(Organization object) {
 				return createOrganizationAdapter();
 			}
@@ -150,6 +154,20 @@ public class HealthcareAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createNamedElementAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link Healthcare.HealthcareSystem <em>System</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see Healthcare.HealthcareSystem
+	 * @generated
+	 */
+	public Adapter createHealthcareSystemAdapter() {
 		return null;
 	}
 

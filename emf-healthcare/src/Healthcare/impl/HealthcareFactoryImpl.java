@@ -57,6 +57,7 @@ public class HealthcareFactoryImpl extends EFactoryImpl implements HealthcareFac
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
+			case HealthcarePackage.HEALTHCARE_SYSTEM: return createHealthcareSystem();
 			case HealthcarePackage.CONDITION: return createCondition();
 			case HealthcarePackage.EDUCATIONAL_INSTITUTE: return createEducationalInstitute();
 			case HealthcarePackage.DEPARTMENT: return createDepartment();
@@ -124,6 +125,17 @@ public class HealthcareFactoryImpl extends EFactoryImpl implements HealthcareFac
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public HealthcareSystem createHealthcareSystem() {
+		HealthcareSystemImpl healthcareSystem = new HealthcareSystemImpl();
+		return healthcareSystem;
 	}
 
 	/**

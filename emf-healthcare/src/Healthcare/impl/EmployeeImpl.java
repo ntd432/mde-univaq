@@ -9,12 +9,16 @@ import Healthcare.Qualification;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -42,7 +46,7 @@ public class EmployeeImpl extends PersonImpl implements Employee {
 	protected EList<EmployeeSpecialty> specialty;
 
 	/**
-	 * The cached value of the '{@link #getQualification() <em>Qualification</em>}' reference list.
+	 * The cached value of the '{@link #getQualification() <em>Qualification</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getQualification()
@@ -91,9 +95,23 @@ public class EmployeeImpl extends PersonImpl implements Employee {
 	@Override
 	public EList<Qualification> getQualification() {
 		if (qualification == null) {
-			qualification = new EObjectResolvingEList<Qualification>(Qualification.class, this, HealthcarePackage.EMPLOYEE__QUALIFICATION);
+			qualification = new EObjectContainmentEList<Qualification>(Qualification.class, this, HealthcarePackage.EMPLOYEE__QUALIFICATION);
 		}
 		return qualification;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case HealthcarePackage.EMPLOYEE__QUALIFICATION:
+				return ((InternalEList<?>)getQualification()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**

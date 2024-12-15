@@ -37,13 +37,13 @@ public interface Employee extends Person {
 	EList<EmployeeSpecialty> getSpecialty();
 
 	/**
-	 * Returns the value of the '<em><b>Qualification</b></em>' reference list.
+	 * Returns the value of the '<em><b>Qualification</b></em>' containment reference list.
 	 * The list contents are of type {@link Healthcare.Qualification}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Qualification</em>' reference list.
+	 * @return the value of the '<em>Qualification</em>' containment reference list.
 	 * @see Healthcare.HealthcarePackage#getEmployee_Qualification()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<Qualification> getQualification();

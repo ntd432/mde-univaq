@@ -36,7 +36,7 @@ public enum ConditionStatus implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	RECURRENCE(1, "Recurrence", ""),
+	RECURRENCE(1, "Recurrence", "Recurrence"),
 
 	/**
 	 * The '<em><b>Inactive</b></em>' literal object.
@@ -74,7 +74,7 @@ public enum ConditionStatus implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #RECURRENCE
-	 * @model name="Recurrence" literal=""
+	 * @model name="Recurrence"
 	 * @generated
 	 * @ordered
 	 */

@@ -217,7 +217,7 @@
     <node concept="2TnRQS" id="1KTb4WhSYrw" role="dQX0X">
       <property role="TrG5h" value="Nakamura" />
       <node concept="2TnRQY" id="1KTb4WhSYr_" role="2TnRQT">
-        <property role="TrG5h" value="Heart rate" />
+        <property role="TrG5h" value="Heart Rate Measurement" />
         <property role="2TnRQZ" value="60/120" />
         <property role="2TnRQW" value="2XlvMUm2w9$/HeartRate" />
       </node>

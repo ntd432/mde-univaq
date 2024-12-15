@@ -26,12 +26,12 @@ public interface Observation extends NamedElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Value</em>' attribute.
-	 * @see #setValue(float)
+	 * @see #setValue(String)
 	 * @see Healthcare.HealthcarePackage#getObservation_Value()
 	 * @model
 	 * @generated
 	 */
-	float getValue();
+	String getValue();
 
 	/**
 	 * Sets the value of the '{@link Healthcare.Observation#getValue <em>Value</em>}' attribute.
@@ -41,7 +41,7 @@ public interface Observation extends NamedElement {
 	 * @see #getValue()
 	 * @generated
 	 */
-	void setValue(float value);
+	void setValue(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Type</b></em>' attribute.

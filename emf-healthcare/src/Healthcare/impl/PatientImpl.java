@@ -9,11 +9,15 @@ import Healthcare.Patient;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,7 +35,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  */
 public class PatientImpl extends PersonImpl implements Patient {
 	/**
-	 * The cached value of the '{@link #getCondition() <em>Condition</em>}' reference list.
+	 * The cached value of the '{@link #getCondition() <em>Condition</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getCondition()
@@ -41,7 +45,7 @@ public class PatientImpl extends PersonImpl implements Patient {
 	protected EList<Condition> condition;
 
 	/**
-	 * The cached value of the '{@link #getObservation() <em>Observation</em>}' reference list.
+	 * The cached value of the '{@link #getObservation() <em>Observation</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getObservation()
@@ -77,7 +81,7 @@ public class PatientImpl extends PersonImpl implements Patient {
 	@Override
 	public EList<Condition> getCondition() {
 		if (condition == null) {
-			condition = new EObjectResolvingEList<Condition>(Condition.class, this, HealthcarePackage.PATIENT__CONDITION);
+			condition = new EObjectContainmentEList<Condition>(Condition.class, this, HealthcarePackage.PATIENT__CONDITION);
 		}
 		return condition;
 	}
@@ -90,9 +94,25 @@ public class PatientImpl extends PersonImpl implements Patient {
 	@Override
 	public EList<Observation> getObservation() {
 		if (observation == null) {
-			observation = new EObjectResolvingEList<Observation>(Observation.class, this, HealthcarePackage.PATIENT__OBSERVATION);
+			observation = new EObjectContainmentEList<Observation>(Observation.class, this, HealthcarePackage.PATIENT__OBSERVATION);
 		}
 		return observation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case HealthcarePackage.PATIENT__CONDITION:
+				return ((InternalEList<?>)getCondition()).basicRemove(otherEnd, msgs);
+			case HealthcarePackage.PATIENT__OBSERVATION:
+				return ((InternalEList<?>)getObservation()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**

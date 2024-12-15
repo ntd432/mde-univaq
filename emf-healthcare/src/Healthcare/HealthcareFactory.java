@@ -22,6 +22,15 @@ public interface HealthcareFactory extends EFactory {
 	HealthcareFactory eINSTANCE = Healthcare.impl.HealthcareFactoryImpl.init();
 
 	/**
+	 * Returns a new object of class '<em>System</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>System</em>'.
+	 * @generated
+	 */
+	HealthcareSystem createHealthcareSystem();
+
+	/**
 	 * Returns a new object of class '<em>Condition</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

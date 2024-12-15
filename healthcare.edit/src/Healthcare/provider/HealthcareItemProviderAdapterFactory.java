@@ -72,6 +72,29 @@ public class HealthcareItemProviderAdapterFactory extends HealthcareAdapterFacto
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link Healthcare.HealthcareSystem} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected HealthcareSystemItemProvider healthcareSystemItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link Healthcare.HealthcareSystem}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createHealthcareSystemAdapter() {
+		if (healthcareSystemItemProvider == null) {
+			healthcareSystemItemProvider = new HealthcareSystemItemProvider(this);
+		}
+
+		return healthcareSystemItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link Healthcare.Condition} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -406,6 +429,7 @@ public class HealthcareItemProviderAdapterFactory extends HealthcareAdapterFacto
 	 */
 	@Override
 	public void dispose() {
+		if (healthcareSystemItemProvider != null) healthcareSystemItemProvider.dispose();
 		if (conditionItemProvider != null) conditionItemProvider.dispose();
 		if (educationalInstituteItemProvider != null) educationalInstituteItemProvider.dispose();
 		if (departmentItemProvider != null) departmentItemProvider.dispose();

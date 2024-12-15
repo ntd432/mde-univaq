@@ -2,17 +2,22 @@
  */
 package Healthcare.impl;
 
+import Healthcare.Department;
 import Healthcare.EmployeeRole;
 import Healthcare.HealthcarePackage;
 import Healthcare.Hospital;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,22 +27,21 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link Healthcare.impl.HospitalImpl#getStaff <em>Staff</em>}</li>
+ *   <li>{@link Healthcare.impl.HospitalImpl#getDepartments <em>Departments</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class HospitalImpl extends NamedElementImpl implements Hospital {
+public class HospitalImpl extends OrganizationImpl implements Hospital {
 	/**
-	 * The cached value of the '{@link #getStaff() <em>Staff</em>}' reference list.
+	 * The cached value of the '{@link #getDepartments() <em>Departments</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getStaff()
+	 * @see #getDepartments()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<EmployeeRole> staff;
-
+	protected EList<Department> departments;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -63,11 +67,25 @@ public class HospitalImpl extends NamedElementImpl implements Hospital {
 	 * @generated
 	 */
 	@Override
-	public EList<EmployeeRole> getStaff() {
-		if (staff == null) {
-			staff = new EObjectResolvingEList<EmployeeRole>(EmployeeRole.class, this, HealthcarePackage.HOSPITAL__STAFF);
+	public EList<Department> getDepartments() {
+		if (departments == null) {
+			departments = new EObjectContainmentEList<Department>(Department.class, this, HealthcarePackage.HOSPITAL__DEPARTMENTS);
 		}
-		return staff;
+		return departments;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case HealthcarePackage.HOSPITAL__DEPARTMENTS:
+				return ((InternalEList<?>)getDepartments()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -78,8 +96,8 @@ public class HospitalImpl extends NamedElementImpl implements Hospital {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case HealthcarePackage.HOSPITAL__STAFF:
-				return getStaff();
+			case HealthcarePackage.HOSPITAL__DEPARTMENTS:
+				return getDepartments();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -93,9 +111,9 @@ public class HospitalImpl extends NamedElementImpl implements Hospital {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case HealthcarePackage.HOSPITAL__STAFF:
-				getStaff().clear();
-				getStaff().addAll((Collection<? extends EmployeeRole>)newValue);
+			case HealthcarePackage.HOSPITAL__DEPARTMENTS:
+				getDepartments().clear();
+				getDepartments().addAll((Collection<? extends Department>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -109,8 +127,8 @@ public class HospitalImpl extends NamedElementImpl implements Hospital {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case HealthcarePackage.HOSPITAL__STAFF:
-				getStaff().clear();
+			case HealthcarePackage.HOSPITAL__DEPARTMENTS:
+				getDepartments().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -124,8 +142,8 @@ public class HospitalImpl extends NamedElementImpl implements Hospital {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case HealthcarePackage.HOSPITAL__STAFF:
-				return staff != null && !staff.isEmpty();
+			case HealthcarePackage.HOSPITAL__DEPARTMENTS:
+				return departments != null && !departments.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

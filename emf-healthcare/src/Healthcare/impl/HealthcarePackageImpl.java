@@ -15,6 +15,7 @@ import Healthcare.EmployeeRole;
 import Healthcare.EmployeeSpecialty;
 import Healthcare.HealthcareFactory;
 import Healthcare.HealthcarePackage;
+import Healthcare.HealthcareSystem;
 import Healthcare.Hospital;
 import Healthcare.NamedElement;
 import Healthcare.Observation;
@@ -46,6 +47,13 @@ public class HealthcarePackageImpl extends EPackageImpl implements HealthcarePac
 	 * @generated
 	 */
 	private EClass namedElementEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass healthcareSystemEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -266,6 +274,46 @@ public class HealthcarePackageImpl extends EPackageImpl implements HealthcarePac
 	 * @generated
 	 */
 	@Override
+	public EClass getHealthcareSystem() {
+		return healthcareSystemEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getHealthcareSystem_Organizations() {
+		return (EReference)healthcareSystemEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getHealthcareSystem_People() {
+		return (EReference)healthcareSystemEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getHealthcareSystem_Appointments() {
+		return (EReference)healthcareSystemEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getOrganization() {
 		return organizationEClass;
 	}
@@ -346,6 +394,16 @@ public class HealthcarePackageImpl extends EPackageImpl implements HealthcarePac
 	 * @generated
 	 */
 	@Override
+	public EReference getDepartment_Staff() {
+		return (EReference)departmentEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getHospital() {
 		return hospitalEClass;
 	}
@@ -356,7 +414,7 @@ public class HealthcarePackageImpl extends EPackageImpl implements HealthcarePac
 	 * @generated
 	 */
 	@Override
-	public EReference getHospital_Staff() {
+	public EReference getHospital_Departments() {
 		return (EReference)hospitalEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -682,6 +740,11 @@ public class HealthcarePackageImpl extends EPackageImpl implements HealthcarePac
 		namedElementEClass = createEClass(NAMED_ELEMENT);
 		createEAttribute(namedElementEClass, NAMED_ELEMENT__NAME);
 
+		healthcareSystemEClass = createEClass(HEALTHCARE_SYSTEM);
+		createEReference(healthcareSystemEClass, HEALTHCARE_SYSTEM__ORGANIZATIONS);
+		createEReference(healthcareSystemEClass, HEALTHCARE_SYSTEM__PEOPLE);
+		createEReference(healthcareSystemEClass, HEALTHCARE_SYSTEM__APPOINTMENTS);
+
 		organizationEClass = createEClass(ORGANIZATION);
 
 		conditionEClass = createEClass(CONDITION);
@@ -694,9 +757,10 @@ public class HealthcarePackageImpl extends EPackageImpl implements HealthcarePac
 		educationalInstituteEClass = createEClass(EDUCATIONAL_INSTITUTE);
 
 		departmentEClass = createEClass(DEPARTMENT);
+		createEReference(departmentEClass, DEPARTMENT__STAFF);
 
 		hospitalEClass = createEClass(HOSPITAL);
-		createEReference(hospitalEClass, HOSPITAL__STAFF);
+		createEReference(hospitalEClass, HOSPITAL__DEPARTMENTS);
 
 		patientEClass = createEClass(PATIENT);
 		createEReference(patientEClass, PATIENT__CONDITION);
@@ -769,7 +833,7 @@ public class HealthcarePackageImpl extends EPackageImpl implements HealthcarePac
 		personEClass.getESuperTypes().add(this.getNamedElement());
 		educationalInstituteEClass.getESuperTypes().add(this.getOrganization());
 		departmentEClass.getESuperTypes().add(this.getNamedElement());
-		hospitalEClass.getESuperTypes().add(this.getNamedElement());
+		hospitalEClass.getESuperTypes().add(this.getOrganization());
 		patientEClass.getESuperTypes().add(this.getPerson());
 		observationEClass.getESuperTypes().add(this.getNamedElement());
 		employeeEClass.getESuperTypes().add(this.getPerson());
@@ -778,7 +842,12 @@ public class HealthcarePackageImpl extends EPackageImpl implements HealthcarePac
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(namedElementEClass, NamedElement.class, "NamedElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getNamedElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, NamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNamedElement_Name(), ecorePackage.getEString(), "name", null, 1, 1, NamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(healthcareSystemEClass, HealthcareSystem.class, "HealthcareSystem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getHealthcareSystem_Organizations(), this.getOrganization(), null, "organizations", null, 0, -1, HealthcareSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHealthcareSystem_People(), this.getPerson(), null, "people", null, 0, -1, HealthcareSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHealthcareSystem_Appointments(), this.getAppointment(), null, "appointments", null, 0, -1, HealthcareSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(organizationEClass, Organization.class, "Organization", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -792,21 +861,22 @@ public class HealthcarePackageImpl extends EPackageImpl implements HealthcarePac
 		initEClass(educationalInstituteEClass, EducationalInstitute.class, "EducationalInstitute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(departmentEClass, Department.class, "Department", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getDepartment_Staff(), this.getEmployeeRole(), null, "staff", null, 0, -1, Department.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(hospitalEClass, Hospital.class, "Hospital", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getHospital_Staff(), this.getEmployeeRole(), null, "staff", null, 0, -1, Hospital.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHospital_Departments(), this.getDepartment(), null, "departments", null, 0, -1, Hospital.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(patientEClass, Patient.class, "Patient", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getPatient_Condition(), this.getCondition(), null, "condition", null, 0, -1, Patient.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPatient_Observation(), this.getObservation(), null, "observation", null, 0, -1, Patient.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPatient_Condition(), this.getCondition(), null, "condition", null, 0, -1, Patient.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPatient_Observation(), this.getObservation(), null, "observation", null, 0, -1, Patient.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(observationEClass, Observation.class, "Observation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getObservation_Value(), ecorePackage.getEFloat(), "value", null, 0, 1, Observation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getObservation_Value(), ecorePackage.getEString(), "value", null, 0, 1, Observation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getObservation_Type(), this.getObservationType(), "type", null, 0, 1, Observation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(employeeEClass, Employee.class, "Employee", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getEmployee_Specialty(), this.getEmployeeSpecialty(), "specialty", null, 0, -1, Employee.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getEmployee_Qualification(), this.getQualification(), null, "qualification", null, 0, -1, Employee.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEmployee_Qualification(), this.getQualification(), null, "qualification", null, 0, -1, Employee.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(qualificationEClass, Qualification.class, "Qualification", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getQualification_IssueDate(), ecorePackage.getEDate(), "issueDate", null, 0, 1, Qualification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
