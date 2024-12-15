@@ -74,8 +74,8 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Healthcare.ecore#//Hospital/departments"/>
     </genClasses>
     <genClasses ecoreClass="Healthcare.ecore#//Patient">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Healthcare.ecore#//Patient/condition"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Healthcare.ecore#//Patient/observation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Healthcare.ecore#//Patient/condition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Healthcare.ecore#//Patient/observation"/>
     </genClasses>
     <genClasses ecoreClass="Healthcare.ecore#//Observation">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Healthcare.ecore#//Observation/value"/>
@@ -83,7 +83,7 @@
     </genClasses>
     <genClasses ecoreClass="Healthcare.ecore#//Employee">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Healthcare.ecore#//Employee/specialty"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Healthcare.ecore#//Employee/qualification"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Healthcare.ecore#//Employee/qualification"/>
     </genClasses>
     <genClasses ecoreClass="Healthcare.ecore#//Qualification">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Healthcare.ecore#//Qualification/issueDate"/>

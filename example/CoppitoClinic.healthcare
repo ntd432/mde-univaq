@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<H:HealthcareSystem xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:H="https://it.univaq.disim.it">
+  <organizations xsi:type="H:Hospital" name="Coppito Clinic">
+    <departments name="Medical Department">
+      <staff name="Principal Doctor" employee="//@people.3"/>
+      <staff name="Nurse" role="Nurse" employee="//@people.2"/>
+      <staff name="Intern" role="Intern" employee="//@people.1"/>
+    </departments>
+    <departments name="Maintenance Department">
+      <staff name="Janitor" role="Janitor" employee="//@people.0"/>
+    </departments>
+  </organizations>
+  <organizations xsi:type="H:EducationalInstitute" name="Havard Medical School"/>
+  <organizations xsi:type="H:EducationalInstitute" name="University of Pennsylvania"/>
+  <people xsi:type="H:Employee" name="Vittorio" gender="true"/>
+  <people xsi:type="H:Employee" name="Melissa"/>
+  <people xsi:type="H:Employee" name="Eric" gender="true">
+    <qualification name="Nursing" issueDate="2007-07-20T00:00:00.000+0200" issuer="//@organizations.2"/>
+  </people>
+  <people xsi:type="H:Employee" name="Gladis">
+    <specialty>Neurology</specialty>
+    <specialty>Pediatry</specialty>
+    <qualification name="Neurologist" issueDate="2000-11-06T00:00:00.000+0100" issuer="//@organizations.1"/>
+    <qualification name="Pediatrician" issueDate="2005-11-06T00:00:00.000+0100" issuer="//@organizations.1"/>
+  </people>
+  <people xsi:type="H:Patient" name="David" gender="true">
+    <condition name="Hypertensive"/>
+    <condition name="Asthma" status="Recurrence" severity="Moderate"/>
+    <observation name="Blood Pressure observation" value="120/80" type="BloodPressure"/>
+    <observation name="Heart rate measurement" value="70" type="HeartRate"/>
+  </people>
+  <people xsi:type="H:Patient" name="Prachi">
+    <condition name="Appendicitis" status="Resolved" severity="Moderate"/>
+    <condition name="Autism"/>
+    <condition name="Pyromania" status="Inactive" severity="Mild"/>
+    <observation name="MRI" value="Normal" type="XRay"/>
+  </people>
+  <people xsi:type="H:Patient" name="Nakamura">
+    <condition name="Food allergy diet" status="Recurrence" severity="Mild"/>
+    <observation name="Heart rate measurement" value="60" type="HeartRate"/>
+  </people>
+  <appointments start="2024-11-20T10:00:00.000+0100" end="2024-11-20T11:00:00.000+0100" practitioner="//@people.2" patient="//@people.4"/>
+  <appointments start="2024-11-25T08:00:00.000+0100" end="2024-11-25T08:30:00.000+0100" status="Fulfilled" type="Checkup" practitioner="//@people.3" patient="//@people.5"/>
+  <appointments start="2024-07-10T13:40:00.000+0200" end="2024-07-10T14:15:00.000+0200" type="Followup" practitioner="//@people.3" patient="//@people.6"/>
+  <appointments start="2024-12-01T17:15:00.000+0100" end="2024-12-01T17:45:00.000+0100" status="NoShow" practitioner="//@people.1" patient="//@people.6"/>
+  <appointments start="2024-12-10T23:00:00.000+0100" end="2024-12-11T03:22:00.000+0100" status="Arrived" type="Emergency" practitioner="//@people.3" patient="//@people.4"/>
+</H:HealthcareSystem>

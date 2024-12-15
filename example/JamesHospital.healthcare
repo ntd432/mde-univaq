@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<H:HealthcareSystem xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:H="https://it.univaq.disim.it">
+  <organizations xsi:type="H:Hospital" name="James Hospital">
+    <departments name="Management Department">
+      <staff name="Hospital Manager" role="HospitalManager" employee="//@people.2"/>
+    </departments>
+    <departments name="Cardiology Department">
+      <staff name="Resident doctor" employee="//@people.1"/>
+    </departments>
+  </organizations>
+  <organizations xsi:type="H:EducationalInstitute" name="UNIvAQ"/>
+  <people xsi:type="H:Patient" name="Jorge" gender="true">
+    <condition name="Diabetes"/>
+    <observation name="SpO2 observation" value="100"/>
+  </people>
+  <people xsi:type="H:Employee" name="James" gender="true">
+    <specialty>Cardiology</specialty>
+    <qualification name="Cardiologist" issueDate="2000-05-20T00:00:00.000+0200" issuer="//@organizations.1"/>
+  </people>
+  <people xsi:type="H:Employee" name="Daniela">
+    <qualification name="MBA" issueDate="1990-10-10T00:00:00.000+0100" issuer="//@organizations.1"/>
+  </people>
+  <appointments start="2024-11-06T14:00:00.000+0100" end="2024-11-06T14:30:00.000+0100" type="Checkup" practitioner="//@people.1" patient="//@people.0"/>
+</H:HealthcareSystem>
