@@ -3,4 +3,5 @@
   <semanticResources>model/Healthcare.ecore</semanticResources>
   <semanticResources>model/Healthcare.genmodel</semanticResources>
   <semanticResources>model/HealthcareSystem.xmi</semanticResources>
+  <semanticResources>model/SecondHealthcareSystem.xmi</semanticResources>
 </viewpoint:DAnalysis>

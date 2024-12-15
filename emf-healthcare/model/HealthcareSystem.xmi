@@ -108,32 +108,32 @@
         type="HeartRate"/>
   </people>
   <appointments
-      start="2024-11-20T00:00:00.000+0100"
-      end="2024-11-20T00:00:00.000+0100"
+      start="2024-11-20T10:00:00.000+0100"
+      end="2024-11-20T11:00:00.000+0100"
       practitioner="//@people.2"
       patient="//@people.4"/>
   <appointments
-      start="2024-11-25T00:00:00.000+0100"
-      end="2024-11-25T00:00:00.000+0100"
+      start="2024-11-25T08:00:00.000+0100"
+      end="2024-11-25T08:30:00.000+0100"
       status="Fulfilled"
       type="Checkup"
       practitioner="//@people.3"
       patient="//@people.5"/>
   <appointments
-      start="2024-07-10T00:00:00.000+0200"
-      end="2024-07-10T00:00:00.000+0200"
+      start="2024-07-10T13:40:00.000+0200"
+      end="2024-07-10T14:15:00.000+0200"
       type="Followup"
       practitioner="//@people.3"
       patient="//@people.6"/>
   <appointments
-      start="2024-12-01T00:00:00.000+0100"
-      end="2024-12-01T00:00:00.000+0100"
+      start="2024-12-01T17:15:00.000+0100"
+      end="2024-12-01T17:45:00.000+0100"
       status="NoShow"
       practitioner="//@people.1"
       patient="//@people.6"/>
   <appointments
-      start="2024-12-10T00:00:00.000+0100"
-      end="2024-12-10T00:00:00.000+0100"
+      start="2024-12-10T23:00:00.000+0100"
+      end="2024-12-11T03:22:00.000+0100"
       status="Arrived"
       type="Emergency"
       practitioner="//@people.3"

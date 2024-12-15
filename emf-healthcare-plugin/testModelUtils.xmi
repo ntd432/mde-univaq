@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:H="https://it.univaq.disim.it">
+  <H:Appointment start="2024-12-15T14:14:12.874+0100" end="2024-12-15T16:14:12.874+0100" practitioner="/2" patient="/1"/>
+  <H:Patient name="Erika"/>
+  <H:Employee name="Dan"/>
+</xmi:XMI>
