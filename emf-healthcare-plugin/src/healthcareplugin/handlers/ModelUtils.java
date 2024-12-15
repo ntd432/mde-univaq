@@ -47,6 +47,14 @@ public class ModelUtils {
     	Resource resource = set.createResource(URI.createURI(filename));
     	resource.getContents().add(apt);
     	
+    	resource.getContents().add(apt);
+        if (apt.getPatient() != null) {
+            resource.getContents().add(apt.getPatient());
+        }
+        if (apt.getPractitioner() != null) {
+            resource.getContents().add(apt.getPractitioner());
+        }
+    	
     	try {
     		resource.save(Collections.EMPTY_MAP);
     	} catch (IOException e) {
@@ -72,7 +80,9 @@ public class ModelUtils {
         Date startDate = new Date();
         Date endDate = Date.from(startDate.toInstant().plus(Duration.ofHours(2)));
         Patient patient = HealthcareFactory.eINSTANCE.createPatient();
+        patient.setName("Erika");
         Employee practitioner = HealthcareFactory.eINSTANCE.createEmployee();
+        practitioner.setName("Dan");
         
         Appointment apt = create(startDate, endDate, AppointmentStatus.BOOKED,
         		AppointmentType.ROUTINE, patient, practitioner);
@@ -85,7 +95,7 @@ public class ModelUtils {
         } else {
         	System.out.println("The loaded appointment model has error");
         }
-        System.out.println("Patient:" + apt.getPatient().getName());
-        System.out.println("Practitioner:" + apt.getPractitioner().getName());
+        System.out.println("Patient: " + apt.getPatient().getName());
+        System.out.println("Practitioner: " + apt.getPractitioner().getName());
     }
 }
