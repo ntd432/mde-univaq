@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="Healthcare" nsURI="https://it.univaq.disim.it" nsPrefix="H">
+  <eAnnotations source="http://www.eclipse.org/OCL/Import">
+    <details key="ecore" value="http://www.eclipse.org/emf/2002/Ecore"/>
+  </eAnnotations>
+  <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+    <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="settingDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+  </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="NamedElement" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
@@ -18,7 +26,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="severity" eType="#//ConditionSeverity"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Person" abstract="true" eSuperTypes="#//NamedElement">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="gender" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="gender" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EducationalInstitute" eSuperTypes="#//Organization"/>
   <eClassifiers xsi:type="ecore:EClass" name="Department" eSuperTypes="#//NamedElement">
@@ -30,6 +39,11 @@
         eType="#//Department" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Patient" eSuperTypes="#//Person">
+    <eOperations name="countTotalAppointments" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+        <details key="body" value="&#xA;&#x9;            Appointment.allInstances()&#xA;&#x9;            ->select(a | a.patient = self)&#xA;&#x9;            ->size()"/>
+      </eAnnotations>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="condition" upperBound="-1"
         eType="#//Condition" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="observation" upperBound="-1"
@@ -40,10 +54,28 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//ObservationType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Employee" eSuperTypes="#//Person">
+    <eOperations name="countTotalAppointments" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+        <details key="body" value="&#xA;&#x9;            EmployeeRole.allInstances()&#xA;&#x9;            ->select(er | er.employee = self and (er.role = Role::Doctor or er.role = Role::Nurse))&#xA;&#x9;            ->collect(er | Appointment.allInstances()->select(a | a.practitioner = er.employee))&#xA;&#x9;            ->size()"/>
+      </eAnnotations>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="specialty" upperBound="-1"
         eType="#//EmployeeSpecialty"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="qualification" upperBound="-1"
         eType="#//Qualification" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="completedAppointments"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" volatile="true"
+        derived="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+        <details key="derivation" value="&#xA;&#x9;            Appointment.allInstances()&#xA;&#x9;            ->select(a | a.practitioner = self and a.status = AppointmentStatus::Fulfilled)&#xA;&#x9;            ->size()"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="totalPatientsTreated" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        volatile="true" derived="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+        <details key="derivation" value="&#xA;&#x9;&#x9;        Appointment.allInstances()&#xA;&#x9;&#x9;        ->select(a | a.practitioner = self)&#xA;&#x9;&#x9;        ->collect(a | a.patient)&#xA;&#x9;&#x9;        ->asSet()&#xA;&#x9;&#x9;        ->size()"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Qualification" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="issueDate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
@@ -54,6 +86,14 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="employee" eType="#//Employee"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Appointment">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="ValidDuration OverlappingAppointments CorrectPractitionerRole"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="ValidDuration" value="&#xA;&#x9;&#x9;&#x9;self.start &lt; self.end"/>
+      <details key="OverlappingAppointments" value="&#xA;&#x9;&#x9;&#x9;Appointment.allInstances()&#xA;&#x9;&#x9;    ->forAll(a |&#xA;&#x9;&#x9;        a.practitioner = self.practitioner and a &lt;> self implies&#xA;&#x9;&#x9;        a.end &lt;= self.start or a.start >= self.end&#xA;&#x9;&#x9;    )"/>
+      <details key="CorrectPractitionerRole" value="&#xA;&#x9;&#x9;&#x9;EmployeeRole.allInstances()&#xA;    &#x9;&#x9;->exists(er | er.employee = self.practitioner and (er.role = Role::Doctor or &#xA;    &#x9;&#x9;&#x9;er.role = Role::Nurse or er.role = Role::Intern&#xA;    &#x9;&#x9;))"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="start" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="end" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" lowerBound="1"

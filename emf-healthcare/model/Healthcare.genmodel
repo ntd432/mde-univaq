@@ -76,6 +76,7 @@
     <genClasses ecoreClass="Healthcare.ecore#//Patient">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Healthcare.ecore#//Patient/condition"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Healthcare.ecore#//Patient/observation"/>
+      <genOperations ecoreOperation="Healthcare.ecore#//Patient/countTotalAppointments"/>
     </genClasses>
     <genClasses ecoreClass="Healthcare.ecore#//Observation">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Healthcare.ecore#//Observation/value"/>
@@ -84,6 +85,8 @@
     <genClasses ecoreClass="Healthcare.ecore#//Employee">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Healthcare.ecore#//Employee/specialty"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Healthcare.ecore#//Employee/qualification"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Healthcare.ecore#//Employee/totalPatientsTreated"/>
+      <genOperations ecoreOperation="Healthcare.ecore#//Employee/countTotalAppointments"/>
     </genClasses>
     <genClasses ecoreClass="Healthcare.ecore#//Qualification">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Healthcare.ecore#//Qualification/issueDate"/>
