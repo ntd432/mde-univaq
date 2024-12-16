@@ -56,7 +56,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="Employee" eSuperTypes="#//Person">
     <eOperations name="countTotalAppointments" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
       <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-        <details key="body" value="&#xA;&#x9;            EmployeeRole.allInstances()&#xA;&#x9;            ->select(er | er.employee = self and (er.role = Role::Doctor or er.role = Role::Nurse))&#xA;&#x9;            ->collect(er | Appointment.allInstances()->select(a | a.practitioner = er.employee))&#xA;&#x9;            ->size()"/>
+        <details key="body" value="&#xA;&#x9;            EmployeeRole.allInstances()&#xA;&#x9;            ->select(er | er.employee = self and (er.role = Role::Doctor or er.role = Role::Nurse or er.role = Role::Intern))&#xA;&#x9;            ->collect(er | Appointment.allInstances()->select(a | a.practitioner = er.employee))&#xA;&#x9;            ->size()"/>
       </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="specialty" upperBound="-1"
@@ -87,11 +87,11 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Appointment">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="ValidDuration OverlappingAppointments CorrectPractitionerRole"/>
+      <details key="constraints" value="ValidTime OverlappingAppointments CorrectPractitionerRole"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-      <details key="ValidDuration" value="&#xA;&#x9;&#x9;&#x9;self.start &lt; self.end"/>
-      <details key="OverlappingAppointments" value="&#xA;&#x9;&#x9;&#x9;Appointment.allInstances()&#xA;&#x9;&#x9;    ->forAll(a |&#xA;&#x9;&#x9;        a.practitioner = self.practitioner and a &lt;> self implies&#xA;&#x9;&#x9;        a.end &lt;= self.start or a.start >= self.end&#xA;&#x9;&#x9;    )"/>
+      <details key="ValidTime" value="&#xA;&#x9;&#x9;&#x9;self.start &lt; self.end"/>
+      <details key="OverlappingAppointments" value="&#xA;&#x9;&#x9;&#x9;Appointment.allInstances()&#xA;&#x9;&#x9;    ->forAll(a |&#xA;&#x9;&#x9;        (a.practitioner = self.practitioner or a.patient = self.patient) &#xA;&#x9;&#x9;        and a &lt;> self implies a.end &lt;= self.start or a.start >= self.end&#xA;&#x9;&#x9;        )"/>
       <details key="CorrectPractitionerRole" value="&#xA;&#x9;&#x9;&#x9;EmployeeRole.allInstances()&#xA;    &#x9;&#x9;->exists(er | er.employee = self.practitioner and (er.role = Role::Doctor or &#xA;    &#x9;&#x9;&#x9;er.role = Role::Nurse or er.role = Role::Intern&#xA;    &#x9;&#x9;))"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="start" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
