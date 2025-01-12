@@ -1,0 +1,50 @@
+-- @path H=/healthcare/model/Healthcare.ecore
+-- @path NH=/new-healthcare/model/NewHealthcare.ecore
+
+module transform;
+create OUT : NH from IN : H;
+
+rule Employee2Doctor {
+	from s: H!Employee (
+		H!EmployeeRole.allInstances()->exists(er | 
+                er.employee = s and er.role.name = 'Doctor'
+		)
+	)
+	to t: NH!Doctor (
+		name <- s.name
+	)
+}
+
+rule Employee2Nurse {
+	from s: H!Employee (
+		H!EmployeeRole.allInstances()->exists(er | 
+                er.employee = s and er.role.name = 'Nurse'
+		)
+	)
+	to t: NH!Nurse (
+		name <- s.name
+	)
+}
+
+rule Employee2Intern {
+	from s: H!Employee (
+		H!EmployeeRole.allInstances()->exists(er | 
+                er.employee = s and er.role.name = 'Intern'
+		)
+	)
+	to t: NH!Intern (
+		name <- s.name
+	)
+}
+
+rule Employee2HospitalManager {
+	from s: H!Employee (
+		H!EmployeeRole.allInstances()->exists(er | 
+                er.employee = s and er.role.name = 'HospitalManager'
+		)
+	)
+	to t: NH!HospitalManager (
+		name <- s.name
+	)
+}
+

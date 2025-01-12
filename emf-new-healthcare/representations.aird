@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description" uid="_el-7INEUEe-hv-A9xVA1_A" selectedViews="_x6BMENEeEe-n8NNT1rqiTw _x6HSsNEeEe-n8NNT1rqiTw _x6JH4NEeEe-n8NNT1rqiTw _x6Ju8NEeEe-n8NNT1rqiTw" version="15.4.1.202403191723">
+  <semanticResources>model/NewHealthcare.ecore</semanticResources>
+  <semanticResources>model/Doctor.xmi</semanticResources>
+  <semanticResources>model/Nurse.xmi</semanticResources>
+  <ownedViews xmi:type="viewpoint:DView" uid="_x6BMENEeEe-n8NNT1rqiTw">
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
+  </ownedViews>
+  <ownedViews xmi:type="viewpoint:DView" uid="_x6HSsNEeEe-n8NNT1rqiTw">
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']"/>
+  </ownedViews>
+  <ownedViews xmi:type="viewpoint:DView" uid="_x6JH4NEeEe-n8NNT1rqiTw">
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Archetype']"/>
+  </ownedViews>
+  <ownedViews xmi:type="viewpoint:DView" uid="_x6Ju8NEeEe-n8NNT1rqiTw">
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Generation']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>
