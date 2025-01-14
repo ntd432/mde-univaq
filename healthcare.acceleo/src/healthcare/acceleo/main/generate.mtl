@@ -1,0 +1,14 @@
+[comment encoding = UTF-8 /]
+[module generate('https://it.univaq.disim.it')]
+
+
+[template public generateElement(aHealthcareSystem : HealthcareSystem)]
+[comment @main/]
+[file ('index.html', false, 'UTF-8')]
+	Welcome to our model!
+	Organizations: 
+	[for (o: Organization | aHealthcareSystem.organizations)]
+		[o.name/]
+	[/for]
+[/file]
+[/template]
