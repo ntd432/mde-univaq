@@ -1,0 +1,106 @@
+		<html>
+		<head>
+		    <title>Employee Information</title>
+		    <style>
+		        body {
+		            font-family: Arial, sans-serif;
+		            background-color: #f9f4ef;
+		            margin: 0;
+		            padding: 0;
+		        }
+		        header {
+		            display: flex;
+		            align-items: center;
+		            padding: 10px 20px;
+		            background-color: #fff;
+		            border-bottom: 1px solid #ddd;
+		        }
+		        header img {
+		            width: 40px;
+		            height: 40px;
+		            margin-right: 10px;
+		        }
+		        header .tabs {
+		            display: flex;
+		            margin-left: auto;
+		        }
+		        header .tabs button {
+		            margin: 0 5px;
+		            padding: 10px 15px;
+		            border: none;
+		            background-color: #fff;
+		            color: #333;
+		            font-size: 14px;
+		            cursor: pointer;
+		        }
+		        header .tabs button.active {
+		            background-color: #ff6b6b;
+		            color: #fff;
+		            border-radius: 20px;
+		        }
+		        main {
+		            padding: 20px;
+		        }
+		        section {
+		            margin: 20px 0;
+		        }
+		        section h2 {
+		            font-size: 18px;
+		            color: #333;
+		            margin-bottom: 10px;
+		        }
+		        section input {
+		            margin-top: 10px;
+		            padding: 10px;
+		            font-size: 16px;
+		            width: 100%;
+		            border: 2px solid #ddd;
+		            border-radius: 5px;
+		        }
+		        .employee-card {
+		            border: 1px solid #ddd;
+		            border-radius: 5px;
+		            padding: 15px;
+		            background-color: #fff;
+		        }
+		        .employee-card h3 {
+		            font-size: 16px;
+		            color: #333;
+		            margin-bottom: 10px;
+		        }
+		        .employee-card p {
+		            margin: 5px 0;
+		            color: #555;
+		        }
+		        .employee-card p strong {
+		            font-weight: bold;
+		            color: #333;
+		        }
+		    </style>
+		</head>
+		<body>
+		    <header>
+		        <a href='index.html'><img src="logo.png" alt="Logo"/></a>
+		        <div class="tabs">
+		            <button>Patient</button>
+		            <button class="active">Employee</button>
+		            <button>Organization</button>
+		        </div>
+		    </header>
+		    <main>
+		        <section>
+		            <h2>Department</h2>
+		            <input type="text" value="Medical Department" disabled/>
+		        </section>
+		        <section>
+		            <h2>Employee</h2>
+		            <div class="employee-card">
+		                <h3>Tien Dung</h3>
+		                <p><strong>Role:</strong> Medical Department</p>
+		                <p><strong>Specialty:</strong> Medical Department</p>
+		                <p><strong>Qualification:</strong> Medical Department</p>
+		            </div>
+		        </section>
+		    </main>
+		</body>
+		</html>

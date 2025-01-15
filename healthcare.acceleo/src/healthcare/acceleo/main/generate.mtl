@@ -5,10 +5,584 @@
 [template public generateElement(aHealthcareSystem : HealthcareSystem)]
 [comment @main/]
 [file ('index.html', false, 'UTF-8')]
-	Welcome to our model!
-	Organizations: 
-	[for (o: Organization | aHealthcareSystem.organizations)]
-		[o.name/]
-	[/for]
+[comment]	<!DOCTYPE html>
+	<html>
+	<head>
+        <title>Second model webpage</title>
+    </head>
+	<body>
+		<p>Welcome to our model!</p>
+		<p>Organizations:</p>
+		<ul>
+			[for (o: Organization | aHealthcareSystem.organizations)]
+				<li><a href="[o.name.replace(' ', '_').concat('.html')/]">[o.name/]</a></li>
+				[generateOrganizationHtmlFile(o)/]
+[comment]				[file (o.name.replace(' ', '_').concat('.html'), false, 'UTF-8')]
+				<!DOCTYPE html>
+			    <html>
+			    <head>
+			        <title>Welcome to [o.name/]</title>
+			    </head>
+			    <body>
+			        <h1>Welcome to [o.name/]!</h1>
+			        <p>This is the page for [o.name/].</p>
+					<p><a href='index.html'>Back</a></p>
+			    </body>
+			    </html>
+				[/file][/comment]
+			[/for]
+			[for (p: Patient | aHealthcareSystem.people->select(p | p.oclIsTypeOf(Patient)))]
+				<li><a href="[p.name.replace(' ', '_').concat('.html')/]">[p.name/]</a></li>
+				[generatePatientHtmlFile(p)/]
+			[/for]
+		</ul>		
+	</body>
+	</html>[/comment]
+	<html>
+	<head>
+	    <title>Healthcare System</title>
+	    <style>
+	        body {
+	            font-family: Arial, sans-serif;
+	            background-color: #f9f4ef;
+	            margin: 0;
+	            padding: 0;
+	            display: flex;
+	            flex-direction: column;
+	            align-items: center;
+	            justify-content: center;
+	            height: 100vh;
+	        }
+	        header {
+	            text-align: center;
+	        }
+	        header img {
+	            width: 60px;
+	            height: 60px;
+	        }
+	        header h1 {
+	            font-size: 24px;
+	            color: #333;
+	            margin-top: 10px;
+	        }
+	        .button-container {
+	            margin-top: 20px;
+	            display: flex;
+	            flex-direction: column;
+	            align-items: center;
+	        }
+	        .button {
+	            display: flex;
+	            align-items: center;
+	            justify-content: space-between;
+	            padding: 15px 20px;
+	            width: 250px;
+	            margin: 10px 0;
+	            border: none;
+	            background-color: #fff;
+	            color: #333;
+	            font-size: 16px;
+	            font-weight: bold;
+	            text-align: left;
+	            border-radius: 30px;
+	            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	            cursor: pointer;
+	            text-decoration: none;
+	        }
+	        .button:hover {
+	            background-color: #ffe6e6;
+	        }
+	        .button span {
+	            font-size: 18px;
+	            color: #ff6b6b;
+	        }
+	    </style>
+	</head>
+	<body>
+	    <header>
+	        <img src="logo.png" alt="Healthcare System Logo"/>
+	        <h1>HEALTHCARE SYSTEM</h1>
+	    </header>
+	    <div class="button-container">
+			<h3>Organizations</h3>
+			[for (o: Organization | aHealthcareSystem.organizations)]
+				<a href="[o.name.replace(' ', '_').concat('.html')/]" class="button">[o.name/]</a>
+				[generateOrganizationHtmlFile(o)/]
+			[/for]
+			<h3>Employees</h3>
+			[for (p: Employee | aHealthcareSystem.people->select(p | p.oclIsTypeOf(Employee)))]
+				<a href="[p.name.replace(' ', '_').concat('.html')/]" class="button">[p.name/]</a>
+				[generateEmployeeHtmlFile(p)/]
+			[/for]
+			<h3>Patients</h3>
+			[for (p: Patient | aHealthcareSystem.people->select(p | p.oclIsTypeOf(Patient)))]
+				<a href="[p.name.replace(' ', '_').concat('.html')/]" class="button">[p.name/]</a>
+				[generatePatientHtmlFile(p)/]
+			[/for]
+[comment]	        <a href="organization.html" class="button">Organization <span>›</span></a>
+	        <a href="employees.html" class="button">Employees <span>›</span></a>
+	        <a href="patients.html" class="button">Patients <span>›</span></a>[/comment]
+	    </div>
+	</body>
+	</html>
 [/file]
+[/template]
+
+[template public generateOrganizationHtmlFile(anElement : Organization)]
+	[file (anElement.name.replace(' ', '_').concat('.html'), false, 'UTF-8')]
+		<html>
+		<head>
+		    <title>[anElement.name/]</title>
+		    <style>
+		        body {
+		            font-family: Arial, sans-serif;
+		            background-color: #f9f4ef;
+		            margin: 0;
+		            padding: 0;
+		        }
+		        header {
+		            display: flex;
+		            align-items: center;
+		            padding: 10px 20px;
+		            background-color: #fff;
+		            border-bottom: 1px solid #ddd;
+		        }
+		        header img {
+		            width: 40px;
+		            height: 40px;
+		            margin-right: 10px;
+		        }
+		        header .tabs {
+		            display: flex;
+		            margin-left: auto;
+		        }
+		        header .tabs button {
+		            margin: 0 5px;
+		            padding: 10px 15px;
+		            border: none;
+		            background-color: #fff;
+		            color: #333;
+		            font-size: 14px;
+		            cursor: pointer;
+		        }
+		        header .tabs button.active {
+		            background-color: #ff6b6b;
+		            color: #fff;
+		            border-radius: 20px;
+		        }
+		        main {
+		            text-align: center;
+		            padding: 50px 20px;
+		        }
+		        main h1 {
+		            font-size: 24px;
+		            color: #333;
+		        }
+		        main input {
+		            margin-top: 20px;
+		            padding: 10px;
+		            font-size: 16px;
+		            width: 300px;
+		            border: 2px solid #007bff;
+		            border-radius: 5px;
+		        }
+
+				main .description-box {
+			      background-color: #fff;
+			      border: 2px solid #e0e0e0;
+			      border-radius: 10px;
+			      padding: 20px;
+			      width: 60%;
+			      margin: 0 auto;
+			      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+			    }
+		    </style>
+		</head>
+		<body>
+		    <header>
+		        <a href='index.html'><img src="logo.png" alt="Logo"/></a>
+		        <div class="tabs">
+		            <button>Patient</button>
+		            <button>Employee</button>
+		            <button class="active">Organization</button>
+		        </div>
+		    </header>
+		    <main>
+		        <h1>[anElement.name/]</h1>
+		        <div class="description-box">
+				<p>Description</p>
+				<ul>
+				[if (anElement.oclIsTypeOf(Hospital))]
+					[for (o: Department | anElement.oclAsType(Hospital).departments)]
+					<li>[o.name/]</li>
+					[/for]
+				[/if]
+				</ul>
+				</div>
+		    </main>
+		</body>
+		</html>
+[comment]		<!DOCTYPE html>
+		<html lang="en">
+		<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>[anElement.name/]</title>
+		<style>
+		    body {
+		      margin: 0;
+		      font-family: Arial, sans-serif;
+		      background-color: #f8f2eb;
+		      color: #000;
+		    }
+		 
+		    .container {
+		      padding: 20px;
+		    }
+		 
+		    .header {
+		      display: flex;
+		      justify-content: space-between;
+		      align-items: center;
+		      padding: 10px 20px;
+		      background-color: #f8f2eb;
+		      border-bottom: 1px solid #ddd;
+		    }
+		 
+		    .header .logo {
+		      display: flex;
+		      align-items: center;
+		    }
+		 
+		    .header .logo img {
+		      width: 40px;
+		      margin-right: 10px;
+		    }
+		 
+		    .header nav button {
+		      background: none;
+		      border: none;
+		      padding: 10px 20px;
+		      margin: 0 5px;
+		      border-radius: 25px;
+		      font-weight: bold;
+		      cursor: pointer;
+		    }
+		 
+		    .header nav button.active {
+		      background-color: #fff;
+		      color: #333;
+		    }
+		 
+		    .header .overview-btn {
+		      background-color: #f28b82;
+		      color: #fff;
+		      border: none;
+		      border-radius: 25px;
+		      padding: 10px 20px;
+		      font-weight: bold;
+		      cursor: pointer;
+		    }
+		 
+		    .main {
+		      text-align: center;
+		      padding: 50px 20px;
+		    }
+		 
+		    .main h1 {
+		      font-size: 36px;
+		      margin-bottom: 20px;
+		    }
+		 
+		    .main h1 span {
+		      color: #f28b82;
+		    }
+		 
+		    .main .description-box {
+		      background-color: #fff;
+		      border: 2px solid #e0e0e0;
+		      border-radius: 10px;
+		      padding: 20px;
+		      width: 60%;
+		      margin: 0 auto;
+		      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		    }
+		</style>
+		</head>
+		<body>
+		<div class="header">
+		<div class="logo">
+[comment]		<img src="path-to-logo.png" alt="Hospital Logo">[/comment]
+		</div>
+		<nav>
+		<button>Patient</button>
+		<button>Employee</button>
+		<button class="active">Organization</button>
+		</nav>
+		</div>
+		<div class="main">
+		<h1><span>HOSPITAL:</span> [anElement.name/]</h1>
+		<div class="description-box">
+		<p>Description</p>
+		<p><a href='index.html'>Back</a></p>
+		</div>
+		</div>
+		</body>
+		</html>[/comment]
+[comment]		<!DOCTYPE html>
+	    <html>
+	    <head>
+	        <title>Welcome to [anElement.name/]</title>
+	    </head>
+	    <body>
+	        <h1>Welcome to [anElement.name/]!</h1>
+	        <p>This is the page for [anElement.name/].</p>
+			<p><a href='index.html'>Back</a></p>
+	    </body>
+	    </html>[/comment]
+	[/file]
+[/template]
+
+[template public generatePatientHtmlFile(patient : Patient)]
+	[file (patient.name.replace(' ', '_').concat('.html'), false, 'UTF-8')]
+		<html>
+		<head>
+		    <title>Patient Summary</title>
+		    <style>
+		        body {
+		            font-family: Arial, sans-serif;
+		            background-color: #f9f4ef;
+		            margin: 0;
+		            padding: 0;
+		        }
+		        header {
+		            display: flex;
+		            align-items: center;
+		            padding: 10px 20px;
+		            background-color: #fff;
+		            border-bottom: 1px solid #ddd;
+		        }
+		        header img {
+		            width: 40px;
+		            height: 40px;
+		            margin-right: 10px;
+		        }
+		        header .tabs {
+		            display: flex;
+		            margin-left: auto;
+		        }
+		        header .tabs button {
+		            margin: 0 5px;
+		            padding: 10px 15px;
+		            border: none;
+		            background-color: #fff;
+		            color: #333;
+		            font-size: 14px;
+		            cursor: pointer;
+		        }
+		        header .tabs button.active {
+		            background-color: #ff6b6b;
+		            color: #fff;
+		            border-radius: 20px;
+		        }
+		        main {
+		            padding: 20px;
+		        }
+		        section {
+		            margin: 20px 0;
+		        }
+		        section h2 {
+		            font-size: 18px;
+		            color: #333;
+		            margin-bottom: 10px;
+		        }
+		        section input {
+		            margin-top: 10px;
+		            padding: 10px;
+		            font-size: 16px;
+		            width: 100%;
+		            border: 2px solid #ddd;
+		            border-radius: 5px;
+		        }
+		        .summary-card, .observation-card, .conditions-list {
+		            border: 1px solid #ddd;
+		            border-radius: 5px;
+		            padding: 15px;
+		            background-color: #fff;
+		            margin-bottom: 20px;
+		        }
+		        .summary-card h3, .observation-card h3 {
+		            font-size: 16px;
+		            color: #333;
+		            margin-bottom: 10px;
+		        }
+		        .summary-card p, .observation-card p {
+		            margin: 5px 0;
+		            color: #555;
+		        }
+		        .conditions-list ul {
+		            list-style-type: none;
+		            padding: 0;
+		        }
+		        .conditions-list li {
+		            border-bottom: 1px solid #ddd;
+		            padding: 10px 0;
+		            color: #555;
+		        }
+		    </style>
+		</head>
+		<body>
+		    <header>
+		        <a href='index.html'><img src="logo.png" alt="Logo"/></a>
+		        <div class="tabs">
+		            <button class="active">Patient</button>
+		            <button>Employee</button>
+		            <button>Organization</button>
+		        </div>
+		    </header>
+		    <main>
+		        <section>
+		            <h2>Summary</h2>
+		            <div class="summary-card">
+		                <h3>Eric Rode</h3>
+		                <p><strong>Employee:</strong> Tien Dung</p>
+		            </div>
+		        </section>
+		        <section>
+		            <h2>Observations</h2>
+		            <div class="observation-card">
+		                <h3>Blood Pressure Observation</h3>
+		                <p><strong>Type:</strong> Blood Pressure</p>
+		                <p><strong>Value:</strong> 90</p>
+		            </div>
+		        </section>
+		        <section>
+		            <h2>Conditions</h2>
+		            <div class="conditions-list">
+		                <ul>
+		                    <li>Hypertension</li>
+		                    <li>Autism</li>
+		                    <li>Allergy</li>
+		                </ul>
+		            </div>
+		        </section>
+				<section>
+		            <h2>Appointments</h2>
+		            <input type="text" value="12/03/2024 12:30:56T" disabled/>
+		        </section>
+		    </main>
+		</body>
+		</html>
+	[/file]
+[/template]
+
+[template public generateEmployeeHtmlFile(e : Employee)]
+	[file (e.name.replace(' ', '_').concat('.html'), false, 'UTF-8')]
+		<html>
+		<head>
+		    <title>Employee Information</title>
+		    <style>
+		        body {
+		            font-family: Arial, sans-serif;
+		            background-color: #f9f4ef;
+		            margin: 0;
+		            padding: 0;
+		        }
+		        header {
+		            display: flex;
+		            align-items: center;
+		            padding: 10px 20px;
+		            background-color: #fff;
+		            border-bottom: 1px solid #ddd;
+		        }
+		        header img {
+		            width: 40px;
+		            height: 40px;
+		            margin-right: 10px;
+		        }
+		        header .tabs {
+		            display: flex;
+		            margin-left: auto;
+		        }
+		        header .tabs button {
+		            margin: 0 5px;
+		            padding: 10px 15px;
+		            border: none;
+		            background-color: #fff;
+		            color: #333;
+		            font-size: 14px;
+		            cursor: pointer;
+		        }
+		        header .tabs button.active {
+		            background-color: #ff6b6b;
+		            color: #fff;
+		            border-radius: 20px;
+		        }
+		        main {
+		            padding: 20px;
+		        }
+		        section {
+		            margin: 20px 0;
+		        }
+		        section h2 {
+		            font-size: 18px;
+		            color: #333;
+		            margin-bottom: 10px;
+		        }
+		        section input {
+		            margin-top: 10px;
+		            padding: 10px;
+		            font-size: 16px;
+		            width: 100%;
+		            border: 2px solid #ddd;
+		            border-radius: 5px;
+		        }
+		        .employee-card {
+		            border: 1px solid #ddd;
+		            border-radius: 5px;
+		            padding: 15px;
+		            background-color: #fff;
+		        }
+		        .employee-card h3 {
+		            font-size: 16px;
+		            color: #333;
+		            margin-bottom: 10px;
+		        }
+		        .employee-card p {
+		            margin: 5px 0;
+		            color: #555;
+		        }
+		        .employee-card p strong {
+		            font-weight: bold;
+		            color: #333;
+		        }
+		    </style>
+		</head>
+		<body>
+		    <header>
+		        <a href='index.html'><img src="logo.png" alt="Logo"/></a>
+		        <div class="tabs">
+		            <button>Patient</button>
+		            <button class="active">Employee</button>
+		            <button>Organization</button>
+		        </div>
+		    </header>
+		    <main>
+		        <section>
+		            <h2>Department</h2>
+		            <input type="text" value="Medical Department" disabled/>
+		        </section>
+		        <section>
+		            <h2>Employee</h2>
+		            <div class="employee-card">
+		                <h3>Tien Dung</h3>
+		                <p><strong>Role:</strong> Medical Department</p>
+		                <p><strong>Specialty:</strong> Medical Department</p>
+		                <p><strong>Qualification:</strong> Medical Department</p>
+		            </div>
+		        </section>
+		    </main>
+		</body>
+		</html>
+	[/file]
 [/template]

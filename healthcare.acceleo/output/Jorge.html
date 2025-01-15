@@ -1,0 +1,128 @@
+		<html>
+		<head>
+		    <title>Patient Summary</title>
+		    <style>
+		        body {
+		            font-family: Arial, sans-serif;
+		            background-color: #f9f4ef;
+		            margin: 0;
+		            padding: 0;
+		        }
+		        header {
+		            display: flex;
+		            align-items: center;
+		            padding: 10px 20px;
+		            background-color: #fff;
+		            border-bottom: 1px solid #ddd;
+		        }
+		        header img {
+		            width: 40px;
+		            height: 40px;
+		            margin-right: 10px;
+		        }
+		        header .tabs {
+		            display: flex;
+		            margin-left: auto;
+		        }
+		        header .tabs button {
+		            margin: 0 5px;
+		            padding: 10px 15px;
+		            border: none;
+		            background-color: #fff;
+		            color: #333;
+		            font-size: 14px;
+		            cursor: pointer;
+		        }
+		        header .tabs button.active {
+		            background-color: #ff6b6b;
+		            color: #fff;
+		            border-radius: 20px;
+		        }
+		        main {
+		            padding: 20px;
+		        }
+		        section {
+		            margin: 20px 0;
+		        }
+		        section h2 {
+		            font-size: 18px;
+		            color: #333;
+		            margin-bottom: 10px;
+		        }
+		        section input {
+		            margin-top: 10px;
+		            padding: 10px;
+		            font-size: 16px;
+		            width: 100%;
+		            border: 2px solid #ddd;
+		            border-radius: 5px;
+		        }
+		        .summary-card, .observation-card, .conditions-list {
+		            border: 1px solid #ddd;
+		            border-radius: 5px;
+		            padding: 15px;
+		            background-color: #fff;
+		            margin-bottom: 20px;
+		        }
+		        .summary-card h3, .observation-card h3 {
+		            font-size: 16px;
+		            color: #333;
+		            margin-bottom: 10px;
+		        }
+		        .summary-card p, .observation-card p {
+		            margin: 5px 0;
+		            color: #555;
+		        }
+		        .conditions-list ul {
+		            list-style-type: none;
+		            padding: 0;
+		        }
+		        .conditions-list li {
+		            border-bottom: 1px solid #ddd;
+		            padding: 10px 0;
+		            color: #555;
+		        }
+		    </style>
+		</head>
+		<body>
+		    <header>
+		        <a href='index.html'><img src="logo.png" alt="Logo"/></a>
+		        <div class="tabs">
+		            <button class="active">Patient</button>
+		            <button>Employee</button>
+		            <button>Organization</button>
+		        </div>
+		    </header>
+		    <main>
+		        <section>
+		            <h2>Summary</h2>
+		            <div class="summary-card">
+		                <h3>Eric Rode</h3>
+		                <p><strong>Employee:</strong> Tien Dung</p>
+		            </div>
+		        </section>
+		        <section>
+		            <h2>Observations</h2>
+		            <div class="observation-card">
+		                <h3>Blood Pressure Observation</h3>
+		                <p><strong>Type:</strong> Blood Pressure</p>
+		                <p><strong>Value:</strong> 90</p>
+		            </div>
+		        </section>
+		        <section>
+		            <h2>Conditions</h2>
+		            <div class="conditions-list">
+		                <ul>
+		                    <li>Hypertension</li>
+		                    <li>Autism</li>
+		                    <li>Allergy</li>
+		                </ul>
+		            </div>
+		        </section>
+				<section>
+		            <h2>Appointments</h2>
+		            <input type="text" value="12/03/2024 12:30:56T" disabled/>
+		        </section>
+		    </main>
+		</body>
+		</html>
