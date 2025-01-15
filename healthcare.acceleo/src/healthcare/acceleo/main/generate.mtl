@@ -441,34 +441,44 @@
 		        </div>
 		    </header>
 		    <main>
+				<h1>[patient.name/]</h1>
 		        <section>
 		            <h2>Summary</h2>
 		            <div class="summary-card">
-		                <h3>Eric Rode</h3>
-		                <p><strong>Employee:</strong> Tien Dung</p>
+		                <p><strong>Gender:</strong> [patient.gender/]</p>
 		            </div>
 		        </section>
 		        <section>
 		            <h2>Observations</h2>
-		            <div class="observation-card">
-		                <h3>Blood Pressure Observation</h3>
-		                <p><strong>Type:</strong> Blood Pressure</p>
-		                <p><strong>Value:</strong> 90</p>
-		            </div>
+					[if (patient.oclIsTypeOf(Patient))]
+						[for (o: Observation | patient.oclAsType(Patient).observation)]
+				            <div class="observation-card">
+				                <h3>[o.name/]</h3>
+				                <p><strong>Type:</strong> [o.type/]</p>
+				                <p><strong>Value:</strong> [o.value/]</p>
+				            </div>
+						[/for]
+					[/if]
 		        </section>
 		        <section>
 		            <h2>Conditions</h2>
 		            <div class="conditions-list">
 		                <ul>
-		                    <li>Hypertension</li>
-		                    <li>Autism</li>
-		                    <li>Allergy</li>
+							[if (patient.oclIsTypeOf(Patient))]
+								[for (c: Condition | patient.oclAsType(Patient).condition)]
+		                    		<li>[c.name/]</li>
+								[/for]
+							[/if]
 		                </ul>
 		            </div>
 		        </section>
 				<section>
 		            <h2>Appointments</h2>
-		            <input type="text" value="12/03/2024 12:30:56T" disabled/>
+					[if (patient.oclIsTypeOf(Patient))]
+						[for (a: Appointment | patient.oclAsType(Patient).siblings().oclAsType(Appointment)->select(ap | ap.patient.name = patient.name))]
+		            		<input type="text" value="[a.start/]" disabled/>
+						[/for]
+					[/if]
 		        </section>
 		    </main>
 		</body>
