@@ -42,11 +42,16 @@
 	<head>
 	    <title>Healthcare System</title>
 	    <style>
+			html, body {
+				height: 100%;
+				width: 100%;
+				overflow-y: 100%;
+	            margin: 0;
+	            padding: 0;
+			}
 	        body {
 	            font-family: Arial, sans-serif;
 	            background-color: #f9f4ef;
-	            margin: 0;
-	            padding: 0;
 	            display: flex;
 	            flex-direction: column;
 	            align-items: center;
@@ -98,7 +103,7 @@
 	        }
 	    </style>
 	</head>
-	<body>
+	<body style="display: block">
 	    <header>
 	        <img src="logo.png" alt="Healthcare System Logo"/>
 	        <h1>HEALTHCARE SYSTEM</h1>
