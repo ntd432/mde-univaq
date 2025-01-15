@@ -1,6 +1,6 @@
 		<html>
 		<head>
-		    <title>UNIVAQ</title>
+		    <title>Employee Information</title>
 		    <style>
 		        body {
 		            font-family: Arial, sans-serif;
@@ -39,46 +39,40 @@
 		            border-radius: 20px;
 		        }
 		        main {
-		            text-align: center;
-		            padding: 50px 20px;
+		            padding: 20px;
 		        }
-		        main h1 {
-		            font-size: 24px;
+		        section {
+		            margin: 20px 0;
+		        }
+		        section h2 {
+		            font-size: 18px;
 		            color: #333;
+		            margin-bottom: 10px;
 		        }
-		        main input {
-		            margin-top: 20px;
+		        section input {
+		            margin-top: 10px;
 		            padding: 10px;
 		            font-size: 16px;
-		            width: 300px;
-		            border: 2px solid #007bff;
+		            width: 100%;
+		            border: 2px solid #ddd;
 		            border-radius: 5px;
 		        }
-
-				main .description-box {
-			      background-color: #fff;
-			      border: 2px solid #e0e0e0;
-			      border-radius: 10px;
-			      padding: 20px;
-			      width: 60%;
-			      margin: 0 auto;
-			      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-			    }
-
-				.details-card {
-		            margin: 0 auto;
-		            width: 80%;
-		            max-width: 600px;
+		        .summary-card {
 		            border: 1px solid #ddd;
 		            border-radius: 5px;
 		            padding: 15px;
 		            background-color: #fff;
 		        }
-		        .details-card p {
-		            margin: 10px 0;
+		        .summary-card h3 {
+		            font-size: 16px;
+		            color: #333;
+		            margin-bottom: 10px;
+		        }
+		        .summary-card p {
+		            margin: 5px 0;
 		            color: #555;
 		        }
-		        .details-card p strong {
+		        .summary-card p strong {
 		            font-weight: bold;
 		            color: #333;
 		        }
@@ -89,15 +83,32 @@
 		        <a href='index.html'><img src="logo.png" alt="Logo"/></a>
 		        <div class="tabs">
 		            <button>Patient</button>
-		            <button>Employee</button>
-		            <button class="active">Organization</button>
+		            <button class="active">Employee</button>
+		            <button>Organization</button>
 		        </div>
 		    </header>
 		    <main>
-		        <h1>UNIVAQ</h1>
-					<div class="details-card">
-			            <p>This organization has no detail</p>
-			        </div>
+				<section>
+		            <h2>Employee summary</h2>
+		            <div class="summary-card">
+		                <p><strong>Name:</strong> Eric</p>
+		                <p><strong>Gender:</strong> 
+							Male
+</p>
+		            </div>
+		        </section>
+		        <section>
+		            <h2>Employee detail</h2>
+					<div class="summary-card">
+		                <p><strong>Qualification:</strong></p>
+						<ul>
+	                    		<li>Nursing</li>
+						</ul>
+		                <p><strong>Specialty:</strong></p>
+						<ul>
+						</ul>
+		            </div>
+		        </section>
 		    </main>
 		</body>
 		</html>

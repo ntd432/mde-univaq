@@ -64,6 +64,24 @@
 			      margin: 0 auto;
 			      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 			    }
+
+				.details-card {
+		            margin: 0 auto;
+		            width: 80%;
+		            max-width: 600px;
+		            border: 1px solid #ddd;
+		            border-radius: 5px;
+		            padding: 15px;
+		            background-color: #fff;
+		        }
+		        .details-card p {
+		            margin: 10px 0;
+		            color: #555;
+		        }
+		        .details-card p strong {
+		            font-weight: bold;
+		            color: #333;
+		        }
 		    </style>
 		</head>
 		<body>
@@ -77,13 +95,20 @@
 		    </header>
 		    <main>
 		        <h1>James Hospital</h1>
-		        <div class="description-box">
-				<p>Description</p>
-				<ul>
-					<li>Management Department</li>
-					<li>Cardiology Department</li>
-				</ul>
-				</div>
+						<div class="details-card">
+				            <p><strong>Department: </strong>Management Department</p>
+				            <hr/>
+				            <p><strong>Employee Role(s):</strong></p>
+				            		<p>Hospital Manager</p>
+				        </div>
+						<br/>
+						<div class="details-card">
+				            <p><strong>Department: </strong>Cardiology Department</p>
+				            <hr/>
+				            <p><strong>Employee Role(s):</strong></p>
+				            		<p>Resident Doctor</p>
+				        </div>
+						<br/>
 		    </main>
 		</body>
 		</html>

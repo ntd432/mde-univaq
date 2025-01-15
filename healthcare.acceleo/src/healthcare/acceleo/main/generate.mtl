@@ -119,9 +119,6 @@
 				<a href="[p.name.replace(' ', '_').concat('.html')/]" class="button">[p.name/]</a>
 				[generatePatientHtmlFile(p)/]
 			[/for]
-[comment]	        <a href="organization.html" class="button">Organization <span>›</span></a>
-	        <a href="employees.html" class="button">Employees <span>›</span></a>
-	        <a href="patients.html" class="button">Patients <span>›</span></a>[/comment]
 	    </div>
 	</body>
 	</html>
@@ -196,6 +193,24 @@
 			      margin: 0 auto;
 			      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 			    }
+
+				.details-card {
+		            margin: 0 auto;
+		            width: 80%;
+		            max-width: 600px;
+		            border: 1px solid #ddd;
+		            border-radius: 5px;
+		            padding: 15px;
+		            background-color: #fff;
+		        }
+		        .details-card p {
+		            margin: 10px 0;
+		            color: #555;
+		        }
+		        .details-card p strong {
+		            font-weight: bold;
+		            color: #333;
+		        }
 		    </style>
 		</head>
 		<body>
@@ -209,137 +224,26 @@
 		    </header>
 		    <main>
 		        <h1>[anElement.name/]</h1>
-		        <div class="description-box">
-				<p>Description</p>
-				<ul>
-				[if (anElement.oclIsTypeOf(Hospital))]
+				[if (anElement.eAllContents()->notEmpty())]
 					[for (o: Department | anElement.oclAsType(Hospital).departments)]
-					<li>[o.name/]</li>
+						<div class="details-card">
+				            <p><strong>Department: </strong>[o.name/]</p>
+				            <hr/>
+				            <p><strong>Employee Role(s):</strong></p>
+								[for (s: EmployeeRole | o.staff)]
+				            		<p>[s.name/]</p>
+								[/for]
+				        </div>
+						<br/>
 					[/for]
+				[else]
+					<div class="details-card">
+			            <p>This organization has no detail</p>
+			        </div>
 				[/if]
-				</ul>
-				</div>
 		    </main>
 		</body>
 		</html>
-[comment]		<!DOCTYPE html>
-		<html lang="en">
-		<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>[anElement.name/]</title>
-		<style>
-		    body {
-		      margin: 0;
-		      font-family: Arial, sans-serif;
-		      background-color: #f8f2eb;
-		      color: #000;
-		    }
-		 
-		    .container {
-		      padding: 20px;
-		    }
-		 
-		    .header {
-		      display: flex;
-		      justify-content: space-between;
-		      align-items: center;
-		      padding: 10px 20px;
-		      background-color: #f8f2eb;
-		      border-bottom: 1px solid #ddd;
-		    }
-		 
-		    .header .logo {
-		      display: flex;
-		      align-items: center;
-		    }
-		 
-		    .header .logo img {
-		      width: 40px;
-		      margin-right: 10px;
-		    }
-		 
-		    .header nav button {
-		      background: none;
-		      border: none;
-		      padding: 10px 20px;
-		      margin: 0 5px;
-		      border-radius: 25px;
-		      font-weight: bold;
-		      cursor: pointer;
-		    }
-		 
-		    .header nav button.active {
-		      background-color: #fff;
-		      color: #333;
-		    }
-		 
-		    .header .overview-btn {
-		      background-color: #f28b82;
-		      color: #fff;
-		      border: none;
-		      border-radius: 25px;
-		      padding: 10px 20px;
-		      font-weight: bold;
-		      cursor: pointer;
-		    }
-		 
-		    .main {
-		      text-align: center;
-		      padding: 50px 20px;
-		    }
-		 
-		    .main h1 {
-		      font-size: 36px;
-		      margin-bottom: 20px;
-		    }
-		 
-		    .main h1 span {
-		      color: #f28b82;
-		    }
-		 
-		    .main .description-box {
-		      background-color: #fff;
-		      border: 2px solid #e0e0e0;
-		      border-radius: 10px;
-		      padding: 20px;
-		      width: 60%;
-		      margin: 0 auto;
-		      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-		    }
-		</style>
-		</head>
-		<body>
-		<div class="header">
-		<div class="logo">
-[comment]		<img src="path-to-logo.png" alt="Hospital Logo">[/comment]
-		</div>
-		<nav>
-		<button>Patient</button>
-		<button>Employee</button>
-		<button class="active">Organization</button>
-		</nav>
-		</div>
-		<div class="main">
-		<h1><span>HOSPITAL:</span> [anElement.name/]</h1>
-		<div class="description-box">
-		<p>Description</p>
-		<p><a href='index.html'>Back</a></p>
-		</div>
-		</div>
-		</body>
-		</html>[/comment]
-[comment]		<!DOCTYPE html>
-	    <html>
-	    <head>
-	        <title>Welcome to [anElement.name/]</title>
-	    </head>
-	    <body>
-	        <h1>Welcome to [anElement.name/]!</h1>
-	        <p>This is the page for [anElement.name/].</p>
-			<p><a href='index.html'>Back</a></p>
-	    </body>
-	    </html>[/comment]
 	[/file]
 [/template]
 
@@ -475,7 +379,7 @@
 				<section>
 		            <h2>Appointments</h2>
 					[if (patient.oclIsTypeOf(Patient))]
-						[for (a: Appointment | patient.oclAsType(Patient).siblings().oclAsType(Appointment)->select(ap | ap.patient.name = patient.name))]
+						[for (a: Appointment | patient.siblings()->select(p | p.oclIsTypeOf(Appointment))->select(ap | ap.oclAsType(Appointment).patient.name = patient.name))]
 		            		<input type="text" value="[a.start/]" disabled/>
 						[/for]
 					[/if]
@@ -547,22 +451,22 @@
 		            border: 2px solid #ddd;
 		            border-radius: 5px;
 		        }
-		        .employee-card {
+		        .summary-card {
 		            border: 1px solid #ddd;
 		            border-radius: 5px;
 		            padding: 15px;
 		            background-color: #fff;
 		        }
-		        .employee-card h3 {
+		        .summary-card h3 {
 		            font-size: 16px;
 		            color: #333;
 		            margin-bottom: 10px;
 		        }
-		        .employee-card p {
+		        .summary-card p {
 		            margin: 5px 0;
 		            color: #555;
 		        }
-		        .employee-card p strong {
+		        .summary-card p strong {
 		            font-weight: bold;
 		            color: #333;
 		        }
@@ -578,17 +482,33 @@
 		        </div>
 		    </header>
 		    <main>
-		        <section>
-		            <h2>Department</h2>
-		            <input type="text" value="Medical Department" disabled/>
+				<section>
+		            <h2>Employee summary</h2>
+		            <div class="summary-card">
+		                <p><strong>Name:</strong> [e.name/]</p>
+		                <p><strong>Gender:</strong> 
+						[if (e.gender)]
+							Male
+						[else]
+							Female
+						[/if]</p>
+		            </div>
 		        </section>
 		        <section>
-		            <h2>Employee</h2>
-		            <div class="employee-card">
-		                <h3>Tien Dung</h3>
-		                <p><strong>Role:</strong> Medical Department</p>
-		                <p><strong>Specialty:</strong> Medical Department</p>
-		                <p><strong>Qualification:</strong> Medical Department</p>
+		            <h2>Employee detail</h2>
+					<div class="summary-card">
+		                <p><strong>Qualification:</strong></p>
+						<ul>
+							[for (q: Qualification | e.qualification)]
+	                    		<li>[q.name/]</li>
+							[/for]
+						</ul>
+		                <p><strong>Specialty:</strong></p>
+						<ul>
+							[for (es: EmployeeSpecialty | e.specialty)]
+	                    		<li>[es/]</li>
+							[/for]
+						</ul>
 		            </div>
 		        </section>
 		    </main>
